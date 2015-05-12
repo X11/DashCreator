@@ -6,6 +6,6 @@
         <title></title>
     </head>
     <body>
-        <h1>Test hook</h1>
+        <h1>hook</h1>
     </body>
 </html>
