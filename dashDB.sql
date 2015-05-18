@@ -6,8 +6,8 @@
 /* Build Table Structure */
 CREATE TABLE "layouts"
 (
-	"id" INTEGER AUTO_INCREMENT NOT NULL,
-	name VARCHAR(255) NOT NULL,
+	id INTEGER AUTO_INCREMENT NOT NULL,
+	`name` VARCHAR(255) NOT NULL,
 	layout TEXT NOT NULL
 );
 
