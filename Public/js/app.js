@@ -1,6 +1,7 @@
 var dashApp = angular.module('dashApp', [
     'ngRoute',
     'dashControllers',
+    'dashDirectives',
 ]);
 
 dashApp.config(['$routeProvider',
