@@ -1,0 +1,24 @@
+{
+  "name": "Dash Creator",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ikzelf01/DashCreator",
+  "authors": [
+    "Ikzelf01 <ikzelf01@live.nl>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.0",
+    "angular-mocks": "~1.3.0",
+    "jquery": "2.1.4",
+    "bootstrap": "~3.1.1",
+    "angular-route": "~1.3.0",
+    "bootstrap-material-design": "~0.3.0"
+  }
+}
