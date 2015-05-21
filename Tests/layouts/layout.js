@@ -1,14 +1,14 @@
 
 var layouts = {
-    square: [
-        [false, false, 50, 50],
-        [false, false, 50, 50],
-        [false, false, 50, 50],
-        [false, false, 50, 50],
-        [25, 25, 50, 50],
+    basic: [
+        [false, false, 50, 25],
+        [false, false, 50, 25],
+        [false, false, 100, 50],
+        [false, false, 50, 25],
+        [false, false, 50, 25],
     ],
     lefty: [
-        [false, false, 50, 50],
+        [false, false, 50, 50], 
         [false, false, 50, 25],
         [false, false, 50, 25],
         [false, false, 50, 50],
