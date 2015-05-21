@@ -29,6 +29,9 @@
                 <div class="col-sm-6">
                     <form novalidate name="RegisterForm" ng-controller="RegisterCtrl" ng-submit="submit()" class="form-horizontal">
                         <h2>REGISTER</h2>
+                        <div ng-show="ErrorMessage" class="alert alert-danger" role="alert">
+                            <p>{{ErrorMessage}}</p> 
+                        </div>
                         <div ng-show="submitted && RegisterForm.$invalid">
                             <div class="alert alert-danger" role="alert">
                                 <p>Error submitting your request.</p> 

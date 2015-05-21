@@ -4,8 +4,12 @@ UserService.$inject = ['$http'];
 
 function UserService($http){
     var user = {
-        isLogged: false,
-        username: false,
+        GetAll: GetAll,
+        GetById: GetById,
+        GetByUsername: GetByUsername,
+        Create: Create,
+        Update: Update,
+        Delete: Delete,
     };
     return user;
 

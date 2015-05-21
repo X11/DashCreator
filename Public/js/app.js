@@ -32,7 +32,7 @@ dashApp.config(['$routeProvider',
             var restrictedPage = $.inArray($location.path(), ['/']) === -1;
             var loggedIn = $r.globals.currentUser;
             if (restrictedPage && !loggedIn) {
-                $location.path('/');
+                //$location.path('/');
             }
         });
 

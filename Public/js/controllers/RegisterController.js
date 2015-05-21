@@ -1,8 +1,8 @@
 angular.module('dashControllers').controller('RegisterCtrl', RegisterCtrl);
 
-RegisterCtrl.$inject = ['$scope', '$http'];
+RegisterCtrl.$inject = ['$scope', '$http', 'UserService'];
 
-function RegisterCtrl($scope, $http){
+function RegisterCtrl($scope, $http, UserService){
     $scope.user = {};
     $scope.submit = function() {
         $scope.submitted = true;
@@ -14,7 +14,7 @@ function RegisterCtrl($scope, $http){
             if (response.success){
                 //$location.path('/');
             } else {
-                // error
+                $scope.ErrorMessage = response.message;
                 $scope.sending = false;
             }
         });
