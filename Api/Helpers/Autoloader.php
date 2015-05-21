@@ -5,7 +5,7 @@ class Autoloader {
     static function loader($class){
         $path = preg_replace('/\\\/', '/', $class);
         $parts = explode('/', $path);
-        $folders = array("Helpers", "Includes", "Controllers", "Models", "Views");
+        $folders = array("Helpers", "Includes", "Controllers", "Models");
         foreach($folders as $value){
             $path = self::$app.$value.'/'.end($parts).'.php';
             if (file_exists($path)){

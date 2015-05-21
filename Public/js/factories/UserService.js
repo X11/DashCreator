@@ -6,10 +6,8 @@ function UserService($http){
     var user = {
         GetAll: GetAll,
         GetById: GetById,
-        GetByUsername: GetByUsername,
         Create: Create,
         Update: Update,
-        Delete: Delete,
     };
     return user;
 
@@ -21,10 +19,6 @@ function UserService($http){
         return $http.get('../Api/?rt=users/' + id).then(handleSuccess, handleError('Error getting user by id'));
     }
 
-    function GetByUsername(username) {
-        return $http.get('../Api/?rt=users/' + username).then(handleSuccess, handleError('Error getting user by username'));
-    }
-
     function Create(user) {
         return $http.post('../Api/?rt=users', user).then(handleSuccess, handleError('Error creating user'));
     }
@@ -33,14 +27,10 @@ function UserService($http){
         return $http.put('../Api/?rt=users/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
     }
 
-    function Delete(id) {
-        return $http.delete('../Api/?rt=users/' + user.id).then(handleSuccess, handleError('Error deleting user'));
-    }
-
     // private functions
 
     function handleSuccess(data) {
-        return data.data;
+        return data;
     }
 
     function handleError(error) {

@@ -21,8 +21,8 @@ dashApp.config(['$routeProvider',
         }
 ]).run(['$rootScope', '$location', '$cookies', '$http',
     function($r, $location, $cookies, $http){
-        // keep user logged in after page refresh
-        $r.globals = $cookies.globals || {};
+
+        $r.globals = JSON.parse($cookies.globals) || {};
         if ($r.globals.currentUser) {
             $http.defaults.headers.common['Authorization'] = 'Basic ' + $r.globals.currentUser.authdata; // jshint ignore:line
         }
@@ -32,7 +32,7 @@ dashApp.config(['$routeProvider',
             var restrictedPage = $.inArray($location.path(), ['/']) === -1;
             var loggedIn = $r.globals.currentUser;
             if (restrictedPage && !loggedIn) {
-                //$location.path('/');
+                $location.path('/');
             }
         });
 

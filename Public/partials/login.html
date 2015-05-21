@@ -3,87 +3,101 @@
         <div class="well well-lg col-xs-push-1 col-xs-10">
             <div class="row">
                 <div class="col-sm-6">
-                    <h1>{{title}}</h1>
-                    <p>{{description}}</p>
-                    <form novalidate class="form-horizontal" ng-controller="LoginCtrl" ng-submit="submit()" action="" method="post">
-                        <h2>LOGIN</h2>
-                        <div class="form-group">
-                            <label for="inputUsername" class="col-lg-2 control-label">Username</label>
-                            <div class="col-lg-10">
-                                <input class="form-control" id="inputUsername" placeholder="Username" type="text">
+                    <div>
+                        <h1>{{title}}</h1>
+                        <p>{{description}}</p>
+                    </div>
+                    <div ng-if="!loggedIn">
+                        <form novalidate  name="LoginForm" ng-controller="LoginCtrl" ng-submit="submit()" class="form-horizontal">
+                            <h2>LOGIN</h2>
+                            <div class="form-group">
+                                <label for="inputUsername" class="col-lg-2 control-label">Username</label>
+                                <div class="col-lg-10">
+                                    <input class="form-control" id="inputUsername" ng-model="user.username" placeholder="Username" type="text">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-                            <div class="col-lg-10">
-                                <input class="form-control" id="inputPassword" placeholder="Password" type="password">
+                            <div class="form-group">
+                                <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                                <div class="col-lg-10">
+                                    <input class="form-control" id="inputPassword" ng-model="user.password" placeholder="Password" type="password">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-10 col-lg-offset-2">
-                                <button type="submit" class="btn btn-primary">Login</button>
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button ng-disabled="loading" type="submit" class="btn btn-primary">Login</button>
+                                    <div ng-show="loading">Sending&hellip;</div>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
                 <div class="col-sm-6">
-                    <form novalidate name="RegisterForm" ng-controller="RegisterCtrl" ng-submit="submit()" class="form-horizontal">
-                        <h2>REGISTER</h2>
-                        <div ng-show="ErrorMessage" class="alert alert-danger" role="alert">
-                            <p>{{ErrorMessage}}</p> 
-                        </div>
-                        <div ng-show="submitted && RegisterForm.$invalid">
-                            <div class="alert alert-danger" role="alert">
-                                <p>Error submitting your request.</p> 
-                                <p>The following errors where found</p>
-                                <ul>
-                                    <li ng-show="RegisterForm.inputUsername.$error.required">Please insert your username.</li>
-                                    <li ng-show="RegisterForm.inputEmail.$error.required">Please insert your email.</li>
-                                    <li ng-show="RegisterForm.inputEmail.$error.email">This is not a valid email.</li>
-                                    <li ng-show="RegisterForm.inputPassword.$error.required">Please insert a password</li>
-                                    <li ng-show="RegisterForm.inputPasswordCheck.$error.match">Your passwords do not match</li>
-                                    <li ng-show="RegisterForm.inputAccepted.$error.required">You have to accept the terms & conditions to register.</li>
-                                </ul>
+                    <div ng-if="loggedIn" class="text-center">
+                        <a href="#/creator" class="btn btn-lg btn-primary">Creator</a>
+                        <a ng-click="logout()" class="btn btn-default">Logout</a>
+                    </div>
+                    <div ng-if="!loggedIn">
+                        <form novalidate name="RegisterForm" ng-controller="RegisterCtrl" ng-submit="submit()" class="form-horizontal">
+                            <h2>REGISTER</h2>
+                            <div ng-show="created" class="alert alert-success" role="alert">
+                                <p>Your account have been created. You can now login</p> 
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputUsername" class="col-lg-2 control-label">Username</label>
-                            <div class="col-lg-10">
-                                <input class="form-control" name="inputUsername" id="inputUsername" ng-model="user.username" placeholder="Username" type="text" required>
+                            <div ng-show="ErrorMessage" class="alert alert-danger" role="alert">
+                                <p>{{ErrorMessage}}</p> 
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-                            <div class="col-lg-10">
-                                <input class="form-control" name="inputEmail" id="inputEmail" ng-model="user.email" placeholder="Email" type="email" required>
+                            <div ng-show="submitted && RegisterForm.$invalid">
+                                <div class="alert alert-danger" role="alert">
+                                    <p>Error submitting your request.</p> 
+                                    <p>The following errors where found</p>
+                                    <ul>
+                                        <li ng-show="RegisterForm.inputUsername.$error.required">Please insert your username.</li>
+                                        <li ng-show="RegisterForm.inputEmail.$error.required">Please insert your email.</li>
+                                        <li ng-show="RegisterForm.inputEmail.$error.email">This is not a valid email.</li>
+                                        <li ng-show="RegisterForm.inputPassword.$error.required">Please insert a password</li>
+                                        <li ng-show="RegisterForm.inputPasswordCheck.$error.match">Your passwords do not match</li>
+                                        <li ng-show="RegisterForm.inputAccepted.$error.required">You have to accept the terms & conditions to register.</li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-                            <div class="col-lg-10">
-                                <input class="form-control" name="inputPassword" id="inputPassword" ng-model="user.password" placeholder="Password" type="password" required>
+                            <div class="form-group">
+                                <label for="inputUsername" class="col-lg-2 control-label">Username</label>
+                                <div class="col-lg-10">
+                                    <input class="form-control" name="inputUsername" id="inputUsername" ng-model="user.username" placeholder="Username" type="text" required>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPasswordCheck" class="col-lg-2 control-label">Re-Password</label>
-                            <div class="col-lg-10">
-                                <input class="form-control" name="inputPasswordCheck" id="inputPasswordCheck" ng-model="user.passwordcheck" ng-match="user.password" placeholder="Password" type="password">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                                <div class="col-lg-10">
+                                    <input class="form-control" name="inputEmail" id="inputEmail" ng-model="user.email" placeholder="Email" type="email" required>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-10 col-lg-push-2 checkbox">
-                                <label>
-                                    <input ng-model="user.accepted" name="inputAccepted" type="checkbox" required> I accept the terms & conditions
-                                </label>
+                            <div class="form-group">
+                                <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                                <div class="col-lg-10">
+                                    <input class="form-control" name="inputPassword" id="inputPassword" ng-model="user.password" placeholder="Password" type="password" required>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-10 col-lg-offset-2">
-                                <button type="submit" ng-disabled="sending" class="btn btn-primary">Register</button>
-                                <div data-ng-show="sending">Sending&hellip;</div>
+                            <div class="form-group">
+                                <label for="inputPasswordCheck" class="col-lg-2 control-label">Re-Password</label>
+                                <div class="col-lg-10">
+                                    <input class="form-control" name="inputPasswordCheck" id="inputPasswordCheck" ng-model="user.passwordcheck" ng-match="user.password" placeholder="Password" type="password">
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-push-2 checkbox">
+                                    <label>
+                                        <input ng-model="user.accepted" name="inputAccepted" type="checkbox" required> I accept the terms & conditions
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button type="submit" ng-disabled="sending" class="btn btn-primary">Register</button>
+                                    <div data-ng-show="sending">Sending&hellip;</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

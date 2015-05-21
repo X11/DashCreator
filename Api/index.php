@@ -1,19 +1,22 @@
 <?php
-/*
+session_start();
 include("Helpers/Autoloader.php");
+Autoloader::start('');
 
 use helper\Router;
+use helper\Database;
 
-Router::get('/', array(
-    'controller' => 'LoginController',
-    'action' => 'index',
-));
+Database::setConfig('localhost', 'root', 'ikke1997', 'dashcreator');
 
-Router::run();
- */
+Router::get('/users', array('controller' => 'UserController', 'action' => 'index'));
+Router::get('/users/:any', array('controller' => 'UserController', 'action' => 'get'));
+Router::post('/users', array('controller' => 'UserController', 'action' => 'create'));
+Router::put('/users/:int', array('controller' => 'UserController', 'action' => 'update'));
 
-$json = [
-    'success' => true,
-    'value' => getallheaders()
-];
-echo json_encode($json);
+Router::post('/authenticate', array('controller' => 'AuthController', 'action' => 'login'));
+
+try {
+    Router::run();
+} catch (Exception $e){
+
+}
