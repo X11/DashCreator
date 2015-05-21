@@ -20,7 +20,12 @@ function UserService($http){
     }
 
     function Create(user) {
-        return $http.post('../Api/?rt=users', user).then(handleSuccess, handleError('Error creating user'));
+        return $http({
+            method: 'POST',
+            url:'../Api/?rt=users',
+            params: user,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        }).then(handleSuccess, handleError('Error creating user'));
     }
 
     function Update(user) {
