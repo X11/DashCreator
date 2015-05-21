@@ -10,5 +10,12 @@ function RegisterCtrl($scope, $http){
             return;
         }
         $scope.sending = true;
+        $http.post('App/users', {
+            params: {
+
+            }
+        }).success(function(){
+
+        });
     };
 }
