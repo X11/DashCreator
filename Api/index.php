@@ -1,5 +1,5 @@
 <?php
-
+/*
 include("Helpers/Autoloader.php");
 
 use helper\Router;
@@ -10,3 +10,10 @@ Router::get('/', array(
 ));
 
 Router::run();
+ */
+
+$json = [
+    'success' => true,
+    'value' => getallheaders()
+];
+echo json_encode($json);

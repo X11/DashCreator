@@ -12,6 +12,7 @@ function RegisterCtrl($scope, $http, UserService){
         $scope.sending = true;
         UserService.Create($scope.user).then(function(response){
             if (response.success){
+                console.log(response);
                 //$location.path('/');
             } else {
                 $scope.ErrorMessage = response.message;

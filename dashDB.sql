@@ -1,5 +1,5 @@
 
-CREATE TABLE `layouts` (`id` INT(1) AUTO_INCREMENT NOT NULL, `name` VARCHAR(255) NOT NULL, `layout` TEXT NOT NULL, PRIMARY KEY(`id`));
+CREATE TABLE `layouts` (`id` INT(1) AUTO_INCREMENT NOT NULL, `name` VARCHAR(255) NOT NULL, `layout` TEXT NOT NULL, PRIMARY KEY(id));
 
 CREATE TABLE `user_options` (`id` INT(1) AUTO_INCREMENT NOT NULL, `user_id` INT(1) NOT NULL, `background_color` VARCHAR(255) NOT NULL, base_color VARCHAR(255) NOT NULL, secondary_color VARCHAR(255) NOT NULL, font_family VARCHAR(255) NOT NULL, layout_id INTEGER NOT NULL, PRIMARY KEY(`id`));
 
