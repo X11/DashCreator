@@ -11,6 +11,7 @@ function RegisterCtrl($scope, $http, UserService){
         }
         $scope.sending = true;
         UserService.Create($scope.user).then(function(data){
+            console.log(data);
             var response = data.data;
             if (response.success){
                 $scope.sending = false;
