@@ -10,12 +10,13 @@ function RegisterCtrl($scope, $http){
             return;
         }
         $scope.sending = true;
-        $http.post('App/users', {
-            params: {
-
+        UserService.Create($scope.user).then(function(response){
+            if (response.success){
+                //$location.path('/');
+            } else {
+                // error
+                $scope.sending = false;
             }
-        }).success(function(){
-
         });
     };
 }
