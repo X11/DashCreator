@@ -5,8 +5,9 @@ use model\AuthModel;
 class AuthController extends BaseController {
     
     function login(){
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        $data = json_decode(file_get_contents("php://input"));
+        $username = $data->username;
+        $password = $data->password;
         try {
             $Auth = new AuthModel();
             $id = $Auth->login($username, $password);
