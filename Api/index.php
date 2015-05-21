@@ -1,5 +1,7 @@
 <?php
 session_start();
+var_dump($_SERVER);
+var_dump($_POST);
 include("Helpers/Autoloader.php");
 Autoloader::start('');
 

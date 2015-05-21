@@ -27,7 +27,6 @@ class UserController extends BaseController {
         $password = $_POST['password'];
         $email = $_POST['email'];
         $password = password_hash($password, PASSWORD_DEFAULT);
-        var_dump($_POST);
         try {
             $UserModel = new UserModel();
             $UserModel->create($username, $email, $password);
