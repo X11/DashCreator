@@ -29,8 +29,8 @@ function UserService($http){
 
     // private functions
 
-    function handleSuccess(data) {
-        return data;
+    function handleSuccess(response) {
+        return response.data;
     }
 
     function handleError(error) {
