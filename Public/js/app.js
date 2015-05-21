@@ -22,7 +22,7 @@ dashApp.config(['$routeProvider',
 ]).run(['$rootScope', '$location', '$cookies', '$http',
     function($r, $location, $cookies, $http){
 
-        $r.globals = JSON.parse($cookies.globals) || {};
+        $r.globals = ($cookies.globals) ? JSON.parse($cookies.globals) : {};
         if ($r.globals.currentUser) {
             $http.defaults.headers.common['Authorization'] = 'Basic ' + $r.globals.currentUser.authdata; // jshint ignore:line
         }
