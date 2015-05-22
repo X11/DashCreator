@@ -1,28 +1,20 @@
 .widgetbar{
-    display:none;
-    border:2px solid black;
-    position:absolute;
-    bottom:0;
-    margin-bottom:20px;
-    height:200px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+    background: #78909C;
+    -moz-box-shadow: 10px 0px 3px #696765;
+    -webkit-box-shadow: 10px 0px 3px #696765;
+    box-shadow: 10px 0px 3px #696765;
 }
-.widgets{
-    height:100px;
-    background-color:#f00;
-}
+/*.widgets{
+    height: 100px;
+    background-color: #f00;
+}*/
 .openBut{
-    width:100px;
-    height:100px;
-    background-color:red;
-    text-align:center;
-    border-radius:50%;
-    position:absolute;
-    bottom:0;
-    margin-bottom:30px;
-        h2{
-            color:#fff;
-            font-size:50px;
-            margin-top:l0px;
-            
-        }
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 10px;
 }
