@@ -1,4 +1,5 @@
 .widgetbar {
+  display: none;
   border: 2px solid black;
   position: absolute;
   bottom: 0;
@@ -8,5 +9,19 @@
 .widgets {
   height: 100px;
   background-color: #f00; }
+
+.openBut {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  text-align: center;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 30px; }
+  .openBut h2 {
+    color: #fff;
+    font-size: 50px;
+    margin-top: l0px; }
 
 /*# sourceMappingURL=style.css.map */
