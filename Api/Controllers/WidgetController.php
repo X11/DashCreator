@@ -18,6 +18,10 @@ class WidgetController extends BaseController {
                 'id' => 3,
                 'name' => 'Bookmarks',
             ],
+            [
+                'id' => 4,
+                'name' => 'Search Bar',
+            ],
         ]]);      
     }
 
