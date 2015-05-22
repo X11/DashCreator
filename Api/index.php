@@ -23,6 +23,8 @@ Router::put('/users/:int', array('controller' => 'UserController', 'action' => '
 
 Router::post('/authenticate', array('controller' => 'AuthController', 'action' => 'login'));
 
+Router::get('/widgets', array('controller' => 'WidgetController', 'action' => 'index'));
+
 try {
     Router::run();
 } catch (Exception $e){
