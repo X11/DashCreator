@@ -12,7 +12,7 @@ function LoginCtrl($scope, $location, AuthenticationService){
                 AuthenticationService.SetCredentials($scope.user.username, $scope.user.password);
                 //$location.path('/creator');
             } else {
-                $scope.ErrorMessage = response.error;
+                $scope.ErrorMessage = response.message;
                 $scope.loading = false;
             }
         });

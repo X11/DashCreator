@@ -10,6 +10,9 @@
                     <div ng-if="!loggedIn">
                         <form novalidate  name="LoginForm" ng-controller="LoginCtrl" ng-submit="submit()" class="form-horizontal">
                             <h2>LOGIN</h2>
+                            <div ng-show="ErrorMessage" class="alert alert-danger" role="alert">
+                                <p>{{ErrorMessage}}</p> 
+                            </div>
                             <div class="form-group">
                                 <label for="inputUsername" class="col-lg-2 control-label">Username</label>
                                 <div class="col-lg-10">
