@@ -1,4 +1,12 @@
-.widgets{
-    width:100%;
+.widgetbar{
     border:2px solid black;
+    position:absolute;
+    bottom:0;
+    margin-bottom:20px;
+    height:200px;
+}
+.widgets{
+    
+    height:100px;
+    background-color:#f00;
 }
