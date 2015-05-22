@@ -2,7 +2,7 @@ angular.module('dashFactories').factory('WidgetService', WidgetService);
 
 UserService.$inject = ['$http'];
 
-function UserService($http){
+function WidgetService($http){
     var services = {
         GetAll: GetAll,
     };
