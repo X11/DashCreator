@@ -3,13 +3,16 @@ angular.module('dashControllers').controller('LoginCtrl', LoginCtrl);
 LoginCtrl.$inject = ['$scope', '$location', 'AuthenticationService'];
 
 function LoginCtrl($scope, $location, AuthenticationService){
-    $scope.login = function(){
+    $scope.user = {};
+    $scope.submit= function(){
         $scope.loading = true;
-        AuthenticationService.Login(user.username, user.password, function(response){
+        AuthenticationService.Login($scope.user.username, $scope.user.password, function(data){
+            var response = data.data;
             if (response.success){
-                AuthenticationService.SetCredentials(user.username, user.password);
+                AuthenticationService.SetCredentials($scope.user.username, $scope.user.password);
+                //$location.path('/creator');
             } else {
-                // error
+                $scope.ErrorMessage = response.error;
                 $scope.loading = false;
             }
         });

@@ -12,9 +12,10 @@ function RegisterCtrl($scope, $http, UserService){
         $scope.sending = true;
         UserService.Create($scope.user).then(function(response){
             if (response.success){
-                //$location.path('/');
+                $scope.sending = false;
+                $scope.created = true;
             } else {
-                $scope.ErrorMessage = response.message;
+                $scope.ErrorMessage = response.message || 'Error creating your account';
                 $scope.sending = false;
             }
         });
