@@ -1,14 +1,19 @@
 <div ng-controller="CreatorCtrl" class="container-fluid">
     <div class="row">
-        <div ng-show="widgetbar.showing" class="col-xs-10 widgetbar">
-            <div class="row">
-                <div ng-repeat="widget in widgets" class="col-md-2 widgets widget-1">
+        <div class="well well-lg col-xs-push-1 col-xs-10">
+            
+        </div>
+    </div>
+    <div class="row">
+        <div ng-show="widgetbar.show" class="well col-xs-push-1 col-xs-10 widgetbar">
+            <div class="panel-body row">
+                <div ng-repeat="widget in widgets" class="col-xs-2 widgets widget-1">
                     <p>{{widget.name}}</p>
                 </div>
             </div>
         </div>
-         <button ng-click="showWidgetBar()" class="col-sm-1 btn btn-fab btn-raised btn-primary open-button">
-            <i class="mdi-image-edit"></i>
-         </button>
     </div>
+    <button ng-click="showWidgetBar()" class="btn btn-fab btn-raised btn-primary open-button">
+        <i class="mdi-image-edit"></i>
+    </button>
 </div>

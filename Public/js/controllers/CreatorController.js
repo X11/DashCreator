@@ -5,12 +5,12 @@ CreatorCtrl.$inject = ['$scope', 'WidgetService'];
 function CreatorCtrl($scope, WidgetService){
 
     $scope.widgetbar = {
-        showing: false,
+        show: false,
     };
 
     // Handlers
     $scope.showWidgetBar = function(){
-        $scope.widgetbar.showing = !$scope.widgetbar.showing;
+        $scope.widgetbar.show = !$scope.widgetbar.show;
     };
 
     // API Call

@@ -1,0 +1,19 @@
+
+.app-container {
+    position:relative;
+
+    &:before {
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        content: '';
+        height: $app-header-height;
+        background: $app-header-background;
+    }
+
+    .app-view {
+        position:relative;
+        top:37px;
+    }
+}
