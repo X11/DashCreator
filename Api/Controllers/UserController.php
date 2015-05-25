@@ -4,10 +4,6 @@ use model\UserModel;
 
 class UserController extends BaseController {
 
-    function index(){
-
-    }
-
     function get($search){
         try {
             $UserModel = new UserModel();
@@ -32,10 +28,6 @@ class UserController extends BaseController {
         } catch (\Exception $e){
             echo json_encode(['success' => false, 'message' => $e->getMessage()]);
         }
-    }
-
-    function update($id){
-
     }
 
 }

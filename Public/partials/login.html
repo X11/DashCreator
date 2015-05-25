@@ -10,19 +10,29 @@
                     <div ng-if="!loggedIn">
                         <form novalidate  name="LoginForm" ng-controller="LoginCtrl" ng-submit="submit()" class="form-horizontal">
                             <h2>LOGIN</h2>
+                            <div ng-show="submitted && LoginForm.$invalid">
+                                <div class="alert alert-danger" role="alert">
+                                    <p>Error submitting your request.</p> 
+                                    <p>The following errors where found:</p>
+                                    <ul>
+                                        <li ng-show="LoginForm.inputUsername.$error.required">Please insert your username.</li>
+                                        <li ng-show="LoginForm.inputPassword.$error.required">Please insert a password</li>
+                                    </ul>
+                                </div>
+                            </div>
                             <div ng-show="ErrorMessage" class="alert alert-danger" role="alert">
                                 <p>{{ErrorMessage}}</p> 
                             </div>
                             <div class="form-group">
                                 <label for="inputUsername" class="col-lg-2 control-label">Username</label>
                                 <div class="col-lg-10">
-                                    <input class="form-control" id="inputUsername" ng-model="user.username" placeholder="Username" type="text">
+                                    <input class="form-control" name="inputUsername" id="inputUsername" ng-model="user.username" placeholder="Username" type="text" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword" class="col-lg-2 control-label">Password</label>
                                 <div class="col-lg-10">
-                                    <input class="form-control" id="inputPassword" ng-model="user.password" placeholder="Password" type="password">
+                                    <input class="form-control" name="inputPassword" id="inputPassword" ng-model="user.password" placeholder="Password" type="password" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -51,7 +61,7 @@
                             <div ng-show="submitted && RegisterForm.$invalid">
                                 <div class="alert alert-danger" role="alert">
                                     <p>Error submitting your request.</p> 
-                                    <p>The following errors where found</p>
+                                    <p>The following errors where found:</p>
                                     <ul>
                                         <li ng-show="RegisterForm.inputUsername.$error.required">Please insert your username.</li>
                                         <li ng-show="RegisterForm.inputEmail.$error.required">Please insert your email.</li>
