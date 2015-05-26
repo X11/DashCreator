@@ -34,4 +34,8 @@
   position: fixed;
   bottom: 0; }
 
+.grid {
+  height: 33vh;
+  border: 2px dashed grey; }
+
 /*# sourceMappingURL=style.css.map */
