@@ -10,11 +10,11 @@ function WidgetService($http){
     return services;
 
     function GetAll() {
-        return $http.get('../Api/?rt=widgets').then(handleSuccess, handleError('Error getting all widgets'));
+        return $http.get('../Api/?rt=admin/widgets').then(handleSuccess, handleError('Error getting all widgets'));
     }
 
     function GetEnabled() {
-        return $http.get('../Api/?rt=admin/widgets').then(handleSuccess, handleError('Error getting all widgets'));
+        return $http.get('../Api/?rt=widgets').then(handleSuccess, handleError('Error getting all widgets'));
     }
 
     // private functions
