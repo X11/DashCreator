@@ -3,9 +3,9 @@
 class AuthModel extends BaseModel {
 
     function login($username, $password){
-        $stmt = $this->db->prepare('SELECT id, password FROM users WHERE username = ? LIMIT 1');
+        $stmt = $this->db->prepare('SELECT id, password, moderator FROM users WHERE username = ? LIMIT 1');
         $stmt->bind_param("s", $username);
-        $stmt->bind_result($id, $password_hash);
+        $stmt->bind_result($id, $password_hash, $moderator);
         $stmt->execute();
         $stmt->fetch();
         if (!$id){
@@ -14,7 +14,7 @@ class AuthModel extends BaseModel {
         if (!password_verify($password, $password_hash)){
             throw new \Exception('Username and password do not match');
         }
-        return $id;
+        return array($id, $moderator);
     }
 
 }

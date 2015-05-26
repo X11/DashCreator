@@ -10,8 +10,13 @@ class AuthController extends BaseController {
         $password = $data->password;
         try {
             $Auth = new AuthModel();
-            $id = $Auth->login($username, $password);
-            echo json_encode(['success' => true, 'userId' => $id]);
+            list($id, $moderator) = $Auth->login($username, $password);
+            if ($moderator == '1'){
+
+            }
+            $_SESSION["username"] = $username;
+            $_SESSION["moderator"] = $moderator;
+            echo json_encode(['success' => true, 'userId' => $id, 'userMod' => $moderator]);
         } catch (Exception $e){
             echo json_encode(['success' => false, 'message' => $e->getMessage()]);
         }

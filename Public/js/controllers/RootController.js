@@ -6,6 +6,10 @@ function RootCtrl($scope, $r, $location, $timeout, AuthenticationService){
     
     $r.$watch('globals', function(){
         $scope.loggedIn = ($r.globals.currentUser) ? true : false;
+        if ($scope.loggedIn)
+            $scope.moderator = ($r.globals.currentUser.moderator == "1") ? true : false;
+        else
+            $scope.moderator = false;
     });
 
     $scope.title = "Dash Creator";

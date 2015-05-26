@@ -15,7 +15,7 @@ function CreatorCtrl($scope, WidgetService){
 
     // API Call
     $scope.widgets = [];
-    WidgetService.GetAll().then(function(response){
+    WidgetService.GetEnabled().then(function(response){
         if (response.success){
             $scope.widgets = response.data;
         } else {

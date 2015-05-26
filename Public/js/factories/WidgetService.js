@@ -5,11 +5,16 @@ UserService.$inject = ['$http'];
 function WidgetService($http){
     var services = {
         GetAll: GetAll,
+        GetEnabled: GetEnabled,
     };
     return services;
 
     function GetAll() {
         return $http.get('../Api/?rt=widgets').then(handleSuccess, handleError('Error getting all widgets'));
+    }
+
+    function GetEnabled() {
+        return $http.get('../Api/?rt=admin/widgets').then(handleSuccess, handleError('Error getting all widgets'));
     }
 
     // private functions

@@ -15,6 +15,9 @@ dashApp.config(['$routeProvider',
                 when('/creator', {
                     templateUrl: 'partials/creator.html',
                 }).
+                when('/admin', {
+                    templateUrl: 'partials/admin.html',
+                }).
                 otherwise({
                     redirectTo: '/',
                 });
@@ -32,6 +35,9 @@ dashApp.config(['$routeProvider',
             var restrictedPage = $.inArray($location.path(), ['/']) === -1;
             var loggedIn = $r.globals.currentUser;
             if (restrictedPage && !loggedIn) {
+                $location.path('/');
+            }
+            if ($location.path() == "/admin" && $r.globals.currentUser.moderator != '1'){
                 $location.path('/');
             }
         });

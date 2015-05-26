@@ -2,6 +2,7 @@
 session_start();
 include("Helpers/Autoloader.php");
 Autoloader::start('');
+define('root', realpath(dirname(__FILE__)));
 
 use helper\Router;
 use helper\Database;
@@ -24,6 +25,10 @@ Router::put('/users/:int', array('controller' => 'UserController', 'action' => '
 Router::post('/authenticate', array('controller' => 'AuthController', 'action' => 'login'));
 
 Router::get('/widgets', array('controller' => 'WidgetController', 'action' => 'index'));
+
+Router::get('/install/widgets', array('controller' => 'WidgetController', 'action' => 'install'));
+
+Router::get('/admin/widgets', array('controller' => 'WidgetController', 'action' => 'getAll'));
 
 try {
     Router::run();
