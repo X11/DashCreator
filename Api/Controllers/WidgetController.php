@@ -24,8 +24,9 @@ class WidgetController extends BaseController {
             } catch (\Exception $e){
                 echo json_encode(['success' => false, 'message' => $e->getMessage()]);
             }
+        } else {
+            echo json_encode(['success' => false, 'permission' => "Access denied"]);
         }
-        echo json_encode(['success' => false, 'permission' => "Access denied"]);
     }
 
     function get($search){
@@ -58,7 +59,7 @@ class WidgetController extends BaseController {
                 $config = (include(root.'/../Widget/'.$file.'/package.php'));
                 $widgetModel->create($config['name'], $file, 0);
             }
-            echo json_encode(['success' => true, 'new' => count($widgets)]);
+            echo json_encode(['success' => true, 'targets' => count($widgets)]);
         } catch (\Exception $e){
             echo json_encode(['success' => false, 'message' => $e->getMessage()]);
         }

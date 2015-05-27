@@ -2,9 +2,9 @@
 .app-container {
     position:relative;
 
-    &:before {
+    .app-header:before {
         position:absolute;
-        top:0;
+        top:-$app-header-offset;
         left:0;
         width:100%;
         content: '';
@@ -14,6 +14,11 @@
 
     .app-view {
         position:relative;
-        top:37px;
+        top: $app-header-offset;
+
     }
+}
+
+.navbar-nomargin {
+    margin-bottom:0;
 }

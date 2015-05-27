@@ -1,11 +1,12 @@
-<div class="app-view container-fluid">
+<div ng-include src="'partials/navigation.html'"></div>
+<div class="app-view app-header container-fluid">
     <div class="row">
         <div class="well well-lg col-xs-push-1 col-xs-10">
             <div class="row">
                 <div class="col-sm-6">
                     <div>
-                        <h1>{{title}}</h1>
-                        <p>{{description}}</p>
+                        <h1>{{info.title}}</h1>
+                        <p>{{info.description}}</p>
                     </div>
                     <div ng-if="!loggedIn">
                         <form novalidate  name="LoginForm" ng-controller="LoginCtrl" ng-submit="submit()" class="form-horizontal">
@@ -45,10 +46,10 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <div ng-if="loggedIn" class="text-center">
-                        <a href="#/creator" class="btn btn-lg btn-primary">Creator</a>
-                        <a ng-if="moderator" href="#/admin" class="btn btn-lg btn-default">Moderate</a>
-                        <a ng-click="logout()" class="btn btn-default">Logout</a>
+                    <div ng-if="loggedIn">
+                        <h2>Getting started</h2>
+                        <p>{{info.gettingStarted}}</p>
+                        <a href="#/creator" class="btn btn-lg btn-primary pull-right">Creator</a>
                     </div>
                     <div ng-if="!loggedIn">
                         <form novalidate name="RegisterForm" ng-controller="RegisterCtrl" ng-submit="submit()" class="form-horizontal">

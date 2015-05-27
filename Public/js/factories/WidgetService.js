@@ -6,6 +6,7 @@ function WidgetService($http){
     var services = {
         GetAll: GetAll,
         GetEnabled: GetEnabled,
+        ScanAndInstall: ScanAndInstall,
     };
     return services;
 
@@ -15,6 +16,10 @@ function WidgetService($http){
 
     function GetEnabled() {
         return $http.get('../Api/?rt=widgets').then(handleSuccess, handleError('Error getting all widgets'));
+    }
+
+    function ScanAndInstall() {
+        return $http.get('../Api/?rt=install/widgets').then(handleSuccess, handleError('Error getting all widgets'));
     }
 
     // private functions
