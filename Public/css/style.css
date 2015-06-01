@@ -39,6 +39,10 @@
 
 .grid {
   height: 100vh;
-  border: 2px dashed grey; }
+  border: 2px dashed grey;
+  border-left: none; }
+
+.grid:nth-child(1) {
+  border-left: 2px dashed grey; }
 
 /*# sourceMappingURL=style.css.map */
