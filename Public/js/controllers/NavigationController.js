@@ -15,7 +15,7 @@ function NavigationCtrl($scope, $r, $location){
             permission: 'loggedIn',
         },
         {
-            name: 'Mangement',
+            name: 'Management',
             route: '/admin',
             permission: 'moderator',
         }
