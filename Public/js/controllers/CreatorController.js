@@ -18,12 +18,16 @@ function CreatorCtrl($scope, WidgetService){
         [],
         [],
         [],
-        [],
-        [],
+        //[],
+        //[],
     ];
 
     $scope.handleNewWidgetDrop = function(row, item){
         $scope.userWidgets[row].push($scope.widgets[item]);
+    };
+
+    $scope.test = function(item){
+        return '../Widget/'+item.directory+'/view.php';
     };
 
     // API Call
