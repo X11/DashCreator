@@ -1,0 +1,26 @@
+<script>
+window.onload = function() {getTime();}
+	// 
+	function getTime() {
+		var time = new Date();
+	    var h = time.getHours();
+	    var m = time.getMinutes();
+	    var s = time.getSeconds();
+	    m = checkTime(m);
+	    s = checkTime(s);
+	    document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
+	    var t = setTimeout(function(){getTime()},500);
+	}
+
+
+function checkTime(i) {
+	    if (i<10) {i = "0" + i};  // +0 if <10 //
+	    return i;
+	}
+</script>
+
+<style>
+    h2 {font-weight:300;font-size:5em;font-family: 'Lato', sans-serif;}
+</style>
+
+<h2 id="time"></h2>
