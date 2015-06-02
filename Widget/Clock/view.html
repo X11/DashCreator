@@ -8,7 +8,7 @@ window.onload = function() {getTime();}
 	    var s = time.getSeconds();
 	    m = checkTime(m);
 	    s = checkTime(s);
-	    document.getElementById('clock-widget').innerHTML = h + ":" + m + ":" + s;
+	    document.querySelector('.clock').innerHTML = h + ":" + m + ":" + s;
 	    var t = setTimeout(function(){getTime()},500);
 	}
 
@@ -20,7 +20,16 @@ function checkTime(i) {
 </script>
 
 <style>
-    #clock-widget {font-weight:300;font-size:5em;font-family: 'Lato', sans-serif;}
+    .clock {font-weight:300;font-size:5em;font-family: 'Lato', sans-serif;}
 </style>
 
-<h2 id="clock-widget"></h2>
+<div class="row">
+    <h2 class="clock clock-widget"></h2>
+</div>
+
+
+
+
+
+
+
