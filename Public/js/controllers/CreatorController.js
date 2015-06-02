@@ -13,6 +13,20 @@ function CreatorCtrl($scope, WidgetService){
         $scope.widgetbar.show = !$scope.widgetbar.show;
     };
 
+    //
+    $scope.userWidgets = [
+        [],
+        [],
+        [],
+        [],
+        [],
+    ];
+
+    $scope.handleDrop = function(row, item){
+        $scope.userWidgets[row].push(item);
+        console.log($scope.userWidgets[row]);
+    };
+
     // API Call
     $scope.widgets = [];
     WidgetService.GetEnabled().then(function(response){
