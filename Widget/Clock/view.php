@@ -20,15 +20,9 @@ function checkTime(i) {
 </script>
 
 <style>
-    .clock {font-weight:300;font-size:5em;font-family: 'Lato', sans-serif;}
-</style>
-<div class="container container-fluid">
-    <h2 class="clock clock-widget"></h2>
+    /*.clock {font-weight:300;font-size:5em;font-family: 'Lato', sans-serif;}*/
+</style> 
+
+<div class="row text-center">
+	<h2 class="clock clock-widget">00:00:00</h2>
 </div>
-
-
-
-
-
-
-
