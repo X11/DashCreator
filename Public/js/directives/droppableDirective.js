@@ -25,7 +25,7 @@ angular.module('dashDirectives').directive('droppable', function(){
                 if (e.stopPropagation) e.stopPropagation();
                 this.classList.remove('over');
                 scope.droppedRow = this.dataset.widgetRow;
-                scope.droppedItem = e.dataTransfer.getData('widgetId');
+                scope.droppedItem = e.dataTransfer.getData('widgetIndex');
 
                 scope.$apply(attrs.drop);
 
