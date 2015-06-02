@@ -56,8 +56,8 @@ class WidgetController extends BaseController {
             }
 
             foreach ($widgets as $widget) {
-                $config = (include(root.'/../Widget/'.$file.'/package.php'));
-                $widgetModel->create($config['name'], $file, 0);
+                $config = (include(root.'/../Widget/'.$widget.'/package.php'));
+                $widgetModel->create($config['name'], $widget, 0);
             }
             echo json_encode(['success' => true, 'targets' => count($widgets)]);
         } catch (\Exception $e){
