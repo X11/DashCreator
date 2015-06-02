@@ -22,7 +22,7 @@ function CreatorCtrl($scope, WidgetService){
         //[],
     ];
 
-    $scope.handleNewWidgetDrop = function(row, item){
+    $scope.handleDrop = function(row, item){
         $scope.userWidgets[row].push($scope.widgets[item]);
     };
 
