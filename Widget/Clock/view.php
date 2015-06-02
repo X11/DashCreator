@@ -22,8 +22,7 @@ function checkTime(i) {
 <style>
     .clock {font-weight:300;font-size:5em;font-family: 'Lato', sans-serif;}
 </style>
-
-<div class="row">
+<div class="container container-fluid">
     <h2 class="clock clock-widget"></h2>
 </div>
 
