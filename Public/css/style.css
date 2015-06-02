@@ -27,7 +27,7 @@
   bottom: 0; }
 
 .grid {
-  margin-top: 20px;
+  padding-top: 20px;
   min-height: 100vh; }
 
 .grid.over {
