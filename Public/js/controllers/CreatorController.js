@@ -22,8 +22,9 @@ function CreatorCtrl($scope, WidgetService){
         [],
     ];
 
-    $scope.handleDrop = function(arg1, arg2){
-        console.log('Handling drop something', arg1, arg2);
+    $scope.handleDrop = function(row, item){
+        $scope.userWidgets[row].push(item);
+        console.log($scope.userWidgets[row]);
     };
 
     // API Call

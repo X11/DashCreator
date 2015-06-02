@@ -29,9 +29,9 @@
 -->
 
     <div class="row">
-        <div ng-repeat="row in userWidgets" droppable drop="handleDrop(item)" class="grid col-xs-2 col-xs-push-1">
-            <div ng-repeat="item in row">
-                
+        <div ng-repeat="row in userWidgets" droppable drop="handleDrop(droppedRow, droppedItem)" data-widget-row="{{$index}}" class="grid col-xs-2 col-xs-push-1">
+            <div ng-repeat="item in row track by $index">
+                {{item}}
             </div>
         </div>
     </div>

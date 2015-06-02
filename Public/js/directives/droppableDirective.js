@@ -1,8 +1,5 @@
 angular.module('dashDirectives').directive('droppable', function(){
     return {
-        scope: {
-            drop: '&'
-        },
         link: function(scope, element, attrs){
 
             var el = element[0];
@@ -27,10 +24,10 @@ angular.module('dashDirectives').directive('droppable', function(){
             el.addEventListener('drop', function(e){
                 if (e.stopPropagation) e.stopPropagation();
                 this.classList.remove('over');
-                scope.item = e.dataTransfer.getData('widgetId');
-                console.log(scope.item);
+                scope.droppedRow = this.dataset.widgetRow;
+                scope.droppedItem = e.dataTransfer.getData('widgetId');
 
-                scope.$apply('drop()');
+                scope.$apply(attrs.drop);
 
             }, false);
 
