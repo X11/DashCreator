@@ -22,3 +22,8 @@
 .navbar-nomargin {
     margin-bottom:0;
 }
+
+.fixed-left   { position: fixed; left:0; }
+.fixed-right  { position: fixed; right:0; }
+.fixed-top    { position: fixed; top:0; }
+.fixed-bottom { position: fixed; bottom:0; }

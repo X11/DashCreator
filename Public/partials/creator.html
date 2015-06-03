@@ -14,16 +14,16 @@
         </div>
     </div>
 
-    <div class="c-row row push-bottom">
-        <div class="col-xs-2 text-left">
+    <div class="c-row row">
+        <div class="col-xs-2 text-left fixed-bottom fixed-left">
             <p><a href="#/" class="btn btn-fab btn-primary btn-raised mdi-action-home"></a></p>
         </div>
-        <div class="col-xs-8">
+        <div class="col-xs-8 col-xs-push-2 fixed-bottom">
             <div ng-show="widgetbar.show" class="widgetbar fade-bottom transition text-center">
                 <p ng-repeat="widget in widgets" draggable drag="handleDrag()" dragend="cancelDrag()" data-widget-index="{{$index}}" class="widget-preview">{{widget.name}}</p>
             </div>
         </div>
-        <div class="col-xs-2 text-right">
+        <div class="col-xs-2 text-right fixed-bottom fixed-right">
             <p><button ng-show="dragging" droppable drop="removeWidget(draggedRow, droppedItem)" class="btn btn-fab btn-raised btn-danger transition fade-right"><i class="mdi-action-delete"></i></button></p>
             <p><button ng-click="togglePanels()" class="btn btn-fab btn-raised btn-primary"><i ng-class="(!hidePanels)?'mdi-action-tab-unselected':'mdi-action-tab'"></i></button></p>
             <p><button ng-click="showWidgetBar()" class="btn btn-fab btn-raised btn-primary"><i class="mdi-content-add"></i></button></p>
