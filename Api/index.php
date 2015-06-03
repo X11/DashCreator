@@ -26,6 +26,7 @@ Router::post('/authenticate', array('controller' => 'AuthController', 'action' =
 
 Router::get('/widgets', array('controller' => 'WidgetController', 'action' => 'index'));
 Router::put('/widgets/:int', array('controller' => 'WidgetController', 'action' => 'update'));
+Router::delete('/widgets/:int', array('controller' => 'WidgetController', 'action' => 'delete'));
 
 Router::get('/install/widgets', array('controller' => 'WidgetController', 'action' => 'install'));
 

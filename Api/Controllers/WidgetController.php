@@ -48,6 +48,20 @@ class WidgetController extends BaseController {
         }
     }
 
+    function delete($id){
+        if (User::isModerator()){
+            try {
+                $widgetModel = new WidgetModel();
+                $widgetModel->delete($id);
+                echo json_encode(['success' => true]);
+            } catch (Exception $e){
+                echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+            }
+        } else {
+            echo json_encode(['success' => false, 'permission' => "Access denied"]);
+        }
+    }
+
     function install(){
         try {
             $widgetModel = new WidgetModel();
@@ -69,7 +83,7 @@ class WidgetController extends BaseController {
 
             foreach ($widgets as $widget) {
                 $config = (include(root.'/../Widget/'.$widget.'/package.php'));
-                $widgetModel->create($config['name'], $widget, 0);
+                $widgetModel->create($config['name'], $widget, '1');
             }
             echo json_encode(['success' => true, 'targets' => count($widgets)]);
         } catch (\Exception $e){

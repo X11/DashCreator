@@ -31,6 +31,16 @@ function AdminCtrl($scope, WidgetService){
         });
     };
 
+    $scope.deleteWidget = function(id){
+        WidgetService.deleteWidget(id).then(function(response){
+            if (response.success){
+                $scope.loadWidgets();
+            } else {
+                // handle error
+            }
+        });
+    };
+
     // Widgets handling
     $scope.widgets = [];
 

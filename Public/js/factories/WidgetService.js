@@ -8,6 +8,7 @@ function WidgetService($http){
         GetEnabled: GetEnabled,
         ScanAndInstall: ScanAndInstall,
         enable: enable,
+        deleteWidget: deleteWidget,
     };
     return services;
 
@@ -25,6 +26,10 @@ function WidgetService($http){
 
     function enable(id, val) {
         return $http.put('../Api/?rt=widgets/'+id, {disable: val}).then(handleSuccess, handleError('Error getting all widgets'));
+    }
+
+    function deleteWidget(id) {
+        return $http.delete('../Api/?rt=widgets/'+id).then(handleSuccess, handleError('Error getting all widgets'));
     }
 
     // private functions

@@ -32,6 +32,14 @@ class WidgetModel extends BaseModel {
         }
     }
 
+    function delete($id){
+        $stmt = $this->db->prepare("DELETE FROM widgets WHERE id = ?");
+        $stmt->bind_param('s', $id);
+        if(!$stmt->execute()){
+            throw new \Exception("Failed to update widget Execute failed: (" . $stmt->errno . ") " . $stmt->error);
+        }
+    }
+
     function setEnabled($id, $val){
         $stmt = $this->db->prepare("UPDATE widgets SET disabled = ? WHERE id = ?");
         $stmt->bind_param('ss', $val, $id);
