@@ -31,10 +31,12 @@ function CreatorCtrl($scope, WidgetService){
 
     // Drag and drop handling
     $scope.handleDrop = function(row, item, draggedRow){
-        var widget = $scope.widgets[item];
+        var widget;
         if (draggedRow != "undefined"){
             draggedRow = parseInt(draggedRow);
             widget = $scope.userWidgets[draggedRow].splice(item, 1)[0];
+        } else {
+            widget = $scope.widgets.splice(item, 1)[0];
         }
         $scope.userWidgets[row].push(widget);
         $scope.cancelDrag();
@@ -55,8 +57,9 @@ function CreatorCtrl($scope, WidgetService){
     $scope.removeWidget = function(row, item){
         if (row != "undefined"){
             row = parseInt(row);
-            $scope.userWidgets[row].splice(item, 1);
+            widget = $scope.userWidgets[row].splice(item, 1)[0];
             $scope.dragging = false;
+            $scope.widgets.push(widget);
         }
     };
 
