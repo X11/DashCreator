@@ -21,7 +21,16 @@
             </div>
         </div>
     </div>
-    <button ng-click="showWidgetBar()" class="btn btn-fab btn-raised btn-primary open-button">
-        <i class="mdi-image-edit"></i>
-    </button>
+    <div class="open-button">
+        <p>
+            <button ng-show="dragging" class="btn btn-fab btn-raised btn-primary">
+                <i class="mdi-action-delete"></i>
+            </button>
+        </p>
+        <p>
+            <button ng-click="showWidgetBar()" class="btn btn-fab btn-raised btn-primary">
+                <i class="mdi-image-edit"></i>
+            </button>
+        </p>
+    </div>
 </div>

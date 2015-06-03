@@ -31,12 +31,12 @@ function CreatorCtrl($scope, WidgetService){
             widget = $scope.userWidgets[draggedRow].splice(item, 1)[0];
         }
         $scope.userWidgets[row].push(widget);
-        $scope.widgetbar.dragged = false;
+        $scope.dragging = false;
     };
 
     $scope.handleDrag = function(){
         $scope.widgetbar.show = false;
-        $scope.widgetbar.dragged = true;
+        $scope.dragging = true;
     };
 
     //
