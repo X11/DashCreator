@@ -4,6 +4,8 @@ CreatorCtrl.$inject = ['$scope', 'WidgetService'];
 
 function CreatorCtrl($scope, WidgetService){
 
+    $scope.hidePanels = false;
+    $scope.dragging = false;
     $scope.widgetbar = {
         show: false,
     };
