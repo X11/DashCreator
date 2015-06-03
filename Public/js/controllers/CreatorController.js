@@ -4,6 +4,8 @@ CreatorCtrl.$inject = ['$scope', 'WidgetService'];
 
 function CreatorCtrl($scope, WidgetService){
 
+    $scope.hidePanels = false;
+    $scope.dragging = false;
     $scope.widgetbar = {
         show: false,
     };
@@ -29,10 +31,12 @@ function CreatorCtrl($scope, WidgetService){
             widget = $scope.userWidgets[draggedRow].splice(item, 1)[0];
         }
         $scope.userWidgets[row].push(widget);
+        $scope.widgetbar.dragged = false;
     };
 
     $scope.handleDrag = function(){
         $scope.widgetbar.show = false;
+        $scope.widgetbar.dragged = true;
     };
 
     //

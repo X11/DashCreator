@@ -1,10 +1,9 @@
 <div ng-controller="CreatorCtrl" class="container-fluid">
-
     <div class="row">
         <div ng-repeat="row in userWidgets" droppable drop="handleDrop(droppedRow, droppedItem, draggedRow)" data-widget-row="{{$index}}" class="grid col-xs-4 col-xs-push-0">
             <div class="row" ng-init="rowNumber = $index">
                 <div ng-repeat="item in row track by $index" class="col-xs-12">
-                    <div draggable drag="handleDrag()" data-widget-row="{{rowNumber}}" data-widget-index="{{$index}}" class="panel panel-primary">
+                    <div draggable drag="handleDrag()" data-widget-row="{{rowNumber}}" data-widget-index="{{$index}}" ng-class="{'panel panel-primary': !hidePanels}">
                         <div class="panel-heading">
                             {{item.name}}
                         </div>
