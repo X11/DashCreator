@@ -39,6 +39,18 @@ function CreatorCtrl($scope, WidgetService){
         $scope.dragging = true;
     };
 
+    $scope.cancelDrag = function(){
+        $scope.dragging = false;
+    };
+
+    $scope.removeWidget = function(row, item){
+        if (row != "undefined"){
+            row = parseInt(row);
+            $scope.userWidgets[row].splice(item, 1);
+            $scope.dragging = false;
+        }
+    };
+
     //
     $scope.getWidgetView = function(item){
         return '../Widget/'+item.directory+'/view.php';

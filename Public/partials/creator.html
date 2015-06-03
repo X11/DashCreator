@@ -1,6 +1,6 @@
 <div ng-controller="CreatorCtrl" class="container-fluid">
     <div class="row">
-        <div ng-repeat="row in userWidgets" droppable drop="handleDrop(droppedRow, droppedItem, draggedRow)" data-widget-row="{{$index}}" class="grid col-xs-4 col-xs-push-0">
+        <div ng-repeat="row in userWidgets" droppable drop="handleDrop(droppedRow, droppedItem, draggedRow)" dragend="cancelDrag()" data-widget-row="{{$index}}" class="grid col-xs-4 col-xs-push-0">
             <div class="row" ng-init="rowNumber = $index">
                 <div ng-repeat="item in row track by $index" class="col-xs-12">
                     <div draggable drag="handleDrag()" data-widget-row="{{rowNumber}}" data-widget-index="{{$index}}" ng-class="{'panel panel-primary': !hidePanels}">
@@ -16,21 +16,17 @@
 
     <div class="row">
         <div ng-show="widgetbar.show" class="col-xs-push-1 col-xs-10 widgetbar fade-bottom transition">
-            <div ng-repeat="widget in widgets" draggable drag="handleDrag()" data-widget-index="{{$index}}" class="btn btn-primary">
+            <div ng-repeat="widget in widgets" draggable drag="handleDrag()" dragend="cancelDrag()" data-widget-index="{{$index}}" class="btn btn-primary">
                 {{widget.name}}
             </div>
         </div>
     </div>
     <div class="open-button">
         <p>
-            <button ng-show="dragging" class="btn btn-fab btn-raised btn-primary">
-                <i class="mdi-action-delete"></i>
-            </button>
+            <button ng-show="dragging" droppable drop="removeWidget(draggedRow, droppedItem)" class="btn btn-fab btn-raised btn-danger transition fade-right"><i class="mdi-action-delete"></i></button>
         </p>
         <p>
-            <button ng-click="showWidgetBar()" class="btn btn-fab btn-raised btn-primary">
-                <i class="mdi-image-edit"></i>
-            </button>
+            <button ng-click="showWidgetBar()" class="btn btn-fab btn-raised btn-primary"><i class="mdi-content-add"></i></button>
         </p>
     </div>
 </div>

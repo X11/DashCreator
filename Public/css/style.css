@@ -1,8 +1,22 @@
+.transition {
+  transition: .4s all; }
+
 .fade-bottom.ng-hide {
-  transition: 0.4s linear all;
+  transition: 0.4s all;
   transform: translateY(100%);
   -moz-transform: translateY(100%);
   -webkit-transform: translateY(100%);
+  opacity: 0; }
+
+.fade-right.ng-hide {
+  transition: 0.4s all;
+  transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  opacity: 0; }
+
+.fading.ng-hide {
+  transition: 0.4s all;
   opacity: 0; }
 
 .app-container {
@@ -31,8 +45,7 @@
 .widgetbar {
   z-index: 7;
   position: fixed;
-  bottom: 0;
-  transition: 0.4s all; }
+  bottom: 0; }
 
 .grid {
   padding-top: 20px;

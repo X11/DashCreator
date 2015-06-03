@@ -14,7 +14,7 @@ angular.module('dashDirectives').directive('draggable', function(){
 
         el.addEventListener('dragend', function(e){
             this.classList.remove('drag');
-            return false;
+            scope.$apply(attrs.dragend);
         }, false);
     };
 });
