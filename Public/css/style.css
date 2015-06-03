@@ -1,3 +1,10 @@
+.fade-bottom.ng-hide {
+  transition: 0.4s linear all;
+  transform: translateY(100%);
+  -moz-transform: translateY(100%);
+  -webkit-transform: translateY(100%);
+  opacity: 0; }
+
 .app-container {
   position: relative; }
   .app-container .app-header:before {
@@ -24,7 +31,8 @@
 .widgetbar {
   z-index: 7;
   position: fixed;
-  bottom: 0; }
+  bottom: 0;
+  transition: 0.4s all; }
 
 .grid {
   padding-top: 20px;

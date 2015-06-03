@@ -16,7 +16,7 @@
     </div>
 
     <div class="row">
-        <div ng-show="widgetbar.show" class="col-xs-push-1 col-xs-10 widgetbar">
+        <div ng-show="widgetbar.show" class="col-xs-push-1 col-xs-10 widgetbar fade-bottom transition">
             <div ng-repeat="widget in widgets" draggable drag="handleDrag()" data-widget-index="{{$index}}" class="btn btn-primary">
                 {{widget.name}}
             </div>

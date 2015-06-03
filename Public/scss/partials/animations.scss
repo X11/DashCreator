@@ -1,1 +1,16 @@
+.transition {
+	transition: .4s all;
+}
 
+.fade-bottom.ng-hide {
+  transition:0.4s linear all;
+  transform: translateY(100%);
+  -moz-transform: translateY(100%);
+  -webkit-transform: translateY(100%);
+  opacity:0;
+}
+
+.fading.ng-hide {
+  transition:0.4s linear all;
+  opacity:0;
+}
