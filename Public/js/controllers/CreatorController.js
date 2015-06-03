@@ -8,6 +8,7 @@ function CreatorCtrl($scope, WidgetService){
     $scope.dragging = false;
     $scope.widgetbar = {
         show: false,
+        dragging: false,
     };
 
     // Clicks
@@ -36,16 +37,19 @@ function CreatorCtrl($scope, WidgetService){
             widget = $scope.userWidgets[draggedRow].splice(item, 1)[0];
         }
         $scope.userWidgets[row].push(widget);
-        $scope.dragging = false;
+        $scope.cancelDrag();
     };
 
     $scope.handleDrag = function(){
+        $scope.widgetbar.dragging = $scope.widgetbar.show;
         $scope.widgetbar.show = false;
         $scope.dragging = true;
     };
 
     $scope.cancelDrag = function(){
         $scope.dragging = false;
+        if ($scope.widgetbar.dragging)
+            $scope.widgetbar.show = true;
     };
 
     $scope.removeWidget = function(row, item){
