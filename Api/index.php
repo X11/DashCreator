@@ -25,6 +25,7 @@ Router::put('/users/:int', array('controller' => 'UserController', 'action' => '
 Router::post('/authenticate', array('controller' => 'AuthController', 'action' => 'login'));
 
 Router::get('/widgets', array('controller' => 'WidgetController', 'action' => 'index'));
+Router::put('/widgets/:int', array('controller' => 'WidgetController', 'action' => 'update'));
 
 Router::get('/install/widgets', array('controller' => 'WidgetController', 'action' => 'install'));
 

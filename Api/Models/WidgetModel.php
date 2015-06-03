@@ -32,8 +32,12 @@ class WidgetModel extends BaseModel {
         }
     }
 
-    function update($id, $columns){
-
+    function setEnabled($id, $val){
+        $stmt = $this->db->prepare("UPDATE widgets SET disabled = ? WHERE id = ?");
+        $stmt->bind_param('ss', $val, $id);
+        if(!$stmt->execute()){
+            throw new \Exception("Failed to update widget Execute failed: (" . $stmt->errno . ") " . $stmt->error);
+        }
     }
 
 }

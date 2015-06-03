@@ -34,7 +34,18 @@ class WidgetController extends BaseController {
     }
 
     function update($id){
-
+        if (User::isModerator()){
+            $data = json_decode(file_get_contents("php://input"));
+            try {
+                $widgetModel = new WidgetModel();
+                $widgetModel->setEnabled($id, $data->disable);
+                echo json_encode(['success' => true]);
+            } catch (Exception $e){
+                echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+            }
+        } else {
+            echo json_encode(['success' => false, 'permission' => "Access denied"]);
+        }
     }
 
     function install(){

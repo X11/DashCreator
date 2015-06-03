@@ -20,6 +20,17 @@ function AdminCtrl($scope, WidgetService){
         },
     };
 
+    $scope.enableWidget = function(id, val){
+        val = (val == '0') ? '1' : '0';
+        WidgetService.enable(id, val).then(function(response){
+            if (response.success){
+                $scope.loadWidgets();
+            } else {
+                // handle error
+            }
+        });
+    };
+
     // Widgets handling
     $scope.widgets = [];
 

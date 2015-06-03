@@ -24,7 +24,7 @@
                                     <td>{{widget.id}}</td>
                                     <td>{{widget.name}}</td>
                                     <td>{{widget.directory}}</td>
-                                    <td><span class="label label-{{widget.disabled == '1' ? 'danger' : 'success'}}" >{{widget.disabled == '1' ? 'disabled' : 'enabled'}}</span></td>
+                                    <td><span class="label" ng-class="widget.disabled == '1' ? 'label-danger' : 'label-success'" ng-click="enableWidget(widget.id, widget.disabled)">{{widget.disabled == '1' ? 'disabled' : 'enabled'}}</span></td>
                                     <td></td>
                                 </tr>
                             </tbody>
