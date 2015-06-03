@@ -25,7 +25,7 @@
         </div>
         <div class="col-xs-2 text-right fixed-bottom fixed-right">
             <p><button ng-show="dragging" droppable drop="removeWidget(draggedRow, droppedItem)" class="btn btn-fab btn-raised btn-danger transition fade-right"><i class="mdi-action-delete"></i></button></p>
-            <p><button ng-click="resetWidgets()" class="btn btn-fab btn-raised btn-danger"><i class="mdi-navigation-cancel"></i></button></p>
+            <p><button ng-click="resetWidgets()" ng-confirm-click="Are you sure you wan't to delete all widgets?" class="btn btn-fab btn-raised btn-danger"><i class="mdi-navigation-cancel"></i></button></p>
             <p><button ng-click="togglePanels()" class="btn btn-fab btn-raised btn-primary"><i ng-class="(!hidePanels)?'mdi-action-tab-unselected':'mdi-action-tab'"></i></button></p>
             <p><button ng-click="showWidgetBar()" class="btn btn-fab btn-raised btn-primary"><i class="mdi-content-add"></i></button></p>
         </div>
