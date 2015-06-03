@@ -1,5 +1,5 @@
 <div class="row text-center">
-	<h2 id="clock-widget" class="clock clock-widget">00:00:00</h2>
+	<h1 id="clock-widget" class="clock clock-widget">00:00:00</h1>
 </div>
 
 <script type="text/javascript" charset="utf-8">

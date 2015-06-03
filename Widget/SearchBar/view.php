@@ -1,8 +1,9 @@
 <style type="text/css">
-	.searchbox{width: 100%!important;text-align:center;}
+	.searchbox {width: 100%!important;text-align:center;}
 </style>
 
-<form  action="https://duckduckgo.com/" method="get" target="_blank">
-    <input class="searchbox form-control" type="text" name="q" value="" placeholder="Search" />
+<form action="https://duckduckgo.com/" method="get" target="_blank">
+    <label for="searchbox">DuckDuckGo:</label>
+    <input class="searchbox form-control" type="text" id="searchbox" name="q" value="" placeholder="Search" />
 </form>
 
