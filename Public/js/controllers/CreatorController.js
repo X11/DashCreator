@@ -31,7 +31,12 @@ function CreatorCtrl($scope, WidgetService){
         $scope.userWidgets[row].push(widget);
     };
 
-    $scope.test = function(item){
+    $scope.handleDrag = function(){
+        $scope.widgetbar.show = false;
+    };
+
+    //
+    $scope.getWidgetView = function(item){
         return '../Widget/'+item.directory+'/view.php';
     };
 

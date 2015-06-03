@@ -4,11 +4,11 @@
         <div ng-repeat="row in userWidgets" droppable drop="handleDrop(droppedRow, droppedItem, draggedRow)" data-widget-row="{{$index}}" class="grid col-xs-4 col-xs-push-0">
             <div class="row" ng-init="rowNumber = $index">
                 <div ng-repeat="item in row track by $index" class="col-xs-12">
-                    <div draggable data-widget-row="{{rowNumber}}" data-widget-index="{{$index}}" class="panel panel-primary">
+                    <div draggable drag="handleDrag()" data-widget-row="{{rowNumber}}" data-widget-index="{{$index}}" class="panel panel-primary">
                         <div class="panel-heading">
                             {{item.name}}
                         </div>
-                        <div class="panel-body" ng-include="test(item)"></div>
+                        <div class="panel-body" ng-include="getWidgetView(item)"></div>
                     </div>
                 </div>
             </div>
@@ -16,18 +16,9 @@
     </div>
 
     <div class="row">
-        <div ng-show="widgetbar.show" class="panel col-xs-push-1 col-xs-10 widgetbar">
-            <!--
-            <div class="panel-body row">
-                <button class="btn btn-default btn-raised">5 row layout</button>
-                <button class="btn btn-default btn-raised">2-1-2 layout</button>
-            </div>
-            -->
-            
-            <div class="panel-body row">
-                <div ng-repeat="widget in widgets" draggable data-widget-index="{{$index}}" class="btn btn-primary">
-                    {{widget.name}}
-                </div>
+        <div ng-show="widgetbar.show" class="col-xs-push-1 col-xs-10 widgetbar">
+            <div ng-repeat="widget in widgets" draggable drag="handleDrag()" data-widget-index="{{$index}}" class="btn btn-primary">
+                {{widget.name}}
             </div>
         </div>
     </div>
