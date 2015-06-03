@@ -10,12 +10,16 @@ function CreatorCtrl($scope, WidgetService){
         show: false,
     };
 
-    // Handlers
+    // Clicks
+    $scope.togglePanels = function(bool){
+        $scope.hidePanels = !$scope.hidePanels;
+    };
+
     $scope.showWidgetBar = function(){
         $scope.widgetbar.show = !$scope.widgetbar.show;
     };
 
-    //
+    // User widgets
     $scope.userWidgets = [
         [],
         [],
@@ -24,6 +28,7 @@ function CreatorCtrl($scope, WidgetService){
         //[],
     ];
 
+    // Drag and drop handling
     $scope.handleDrop = function(row, item, draggedRow){
         var widget = $scope.widgets[item];
         if (draggedRow != "undefined"){
