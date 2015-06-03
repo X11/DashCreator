@@ -52,6 +52,7 @@ class WidgetController extends BaseController {
             foreach ($files as $file) {
                 if ($file == '.' || $file == '..') continue;
                 if (isset($widgets_index[$file])) continue;
+                if (!is_dir(root.'/../Widget/'.$file)) continue;
                 $widgets[] = $file;
             }
 
