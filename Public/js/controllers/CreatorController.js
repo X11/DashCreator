@@ -29,6 +29,21 @@ function CreatorCtrl($scope, WidgetService){
         //[],
     ];
 
+    //if (localStorage.getItem('userWidgets'))
+    //    $scope.userWidgets = JSON.parse(localStorage.getItem('userWidgets'));
+
+    $scope.saveWidgets = function(){
+        localStorage.setItem('userWidgets', JSON.stringify($scope.userWidgets));
+    };
+
+    $scope.resetWidgets = function(){
+        for (var i = 0, l = $scope.userWidgets.length; i < l; i ++) {
+            var row = $scope.userWidgets[i];
+            var widgets = row.splice(0, row.length);
+            $scope.widgets = $scope.widgets.concat(widgets);
+        }
+    };
+
     // Drag and drop handling
     $scope.handleDrop = function(row, item, draggedRow){
         var widget;
@@ -40,6 +55,7 @@ function CreatorCtrl($scope, WidgetService){
         }
         $scope.userWidgets[row].push(widget);
         $scope.cancelDrag();
+        $scope.saveWidgets();
     };
 
     $scope.handleDrag = function(){
@@ -60,6 +76,7 @@ function CreatorCtrl($scope, WidgetService){
             widget = $scope.userWidgets[row].splice(item, 1)[0];
             $scope.dragging = false;
             $scope.widgets.push(widget);
+            $scope.saveWidgets();
         }
     };
 

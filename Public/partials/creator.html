@@ -20,11 +20,12 @@
         </div>
         <div class="col-xs-8 col-xs-push-2 fixed-bottom">
             <div ng-show="widgetbar.show" class="widgetbar fade-bottom transition text-center">
-                <p ng-repeat="widget in widgets" draggable drag="handleDrag()" dragend="cancelDrag()" data-widget-index="{{$index}}" class="widget-preview">{{widget.name}}</p>
+                <p ng-repeat="widget in widgets track by $index" draggable drag="handleDrag()" dragend="cancelDrag()" data-widget-index="{{$index}}" class="widget-preview">{{widget.name}}</p>
             </div>
         </div>
         <div class="col-xs-2 text-right fixed-bottom fixed-right">
             <p><button ng-show="dragging" droppable drop="removeWidget(draggedRow, droppedItem)" class="btn btn-fab btn-raised btn-danger transition fade-right"><i class="mdi-action-delete"></i></button></p>
+            <p><button ng-click="resetWidgets()" class="btn btn-fab btn-raised btn-danger"><i class="mdi-navigation-cancel"></i></button></p>
             <p><button ng-click="togglePanels()" class="btn btn-fab btn-raised btn-primary"><i ng-class="(!hidePanels)?'mdi-action-tab-unselected':'mdi-action-tab'"></i></button></p>
             <p><button ng-click="showWidgetBar()" class="btn btn-fab btn-raised btn-primary"><i class="mdi-content-add"></i></button></p>
         </div>
