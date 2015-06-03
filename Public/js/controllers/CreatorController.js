@@ -22,8 +22,13 @@ function CreatorCtrl($scope, WidgetService){
         //[],
     ];
 
-    $scope.handleDrop = function(row, item){
-        $scope.userWidgets[row].push($scope.widgets[item]);
+    $scope.handleDrop = function(row, item, draggedRow){
+        var widget = $scope.widgets[item];
+        if (draggedRow != "undefined"){
+            draggedRow = parseInt(draggedRow);
+            widget = $scope.userWidgets[draggedRow].splice(item, 1)[0];
+        }
+        $scope.userWidgets[row].push(widget);
     };
 
     $scope.test = function(item){

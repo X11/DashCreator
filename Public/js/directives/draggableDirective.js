@@ -5,6 +5,7 @@ angular.module('dashDirectives').directive('draggable', function(){
         el.addEventListener('dragstart', function(e){
             e.dataTransfer.effectAllowed = 'move';
             e.dataTransfer.setData('widgetIndex', this.dataset.widgetIndex);
+            e.dataTransfer.setData('widgetRow', this.dataset.widgetRow);
             this.classList.add('drag');
             return false;
         }, false);
