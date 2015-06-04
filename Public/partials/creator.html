@@ -20,7 +20,13 @@
         </div>
         <div class="col-xs-8 col-xs-push-2 fixed-bottom">
             <div ng-show="widgetbar.show" class="widgetbar fade-bottom transition text-center">
-                <p ng-repeat="widget in widgets track by $index" draggable drag="handleDrag()" dragend="cancelDrag()" data-widget-index="{{$index}}" class="widget-preview">{{widget.name}}</p>
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="inputWidgetSearch" class="control-label">Filter:</label>
+                        <input class="form-control" ng-model="widgetSearch">
+                    </div>
+                </form>
+                <p ng-repeat="widget in widgets | filter: widgetSearch" draggable drag="handleDrag()" dragend="cancelDrag()" data-widget-index="{{$index}}" class="widget-preview animate-repeat">{{widget.name}}</p>
             </div>
         </div>
         <div class="col-xs-2 text-right fixed-bottom fixed-right">

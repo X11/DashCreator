@@ -8,6 +8,8 @@ class WidgetModel extends BaseModel {
         $result = $stmt->get_result();
         $widgets = [];
         while($row = $result->fetch_assoc()){
+            if (file_exists(root.'/Widget/'.$row['directory'].'/package.php'))
+                $row['config'] = (include(root.'/../Widget/'.$row['directory'].'/package.php'));
             $widgets[] = $row;
         }
         return $widgets;
@@ -19,6 +21,8 @@ class WidgetModel extends BaseModel {
         $result = $stmt->get_result();
         $widgets = [];
         while($row = $result->fetch_assoc()){
+            if (file_exists(root.'/Widget/'.$row['directory'].'/package.php'))
+                $row['config'] = (include(root.'/../Widget/'.$row['directory'].'/package.php'));
             $widgets[] = $row;
         }
         return $widgets;
