@@ -16,7 +16,6 @@ class UserController extends BaseController {
 
     function create(){
         $data = json_decode(file_get_contents("php://input"));
-        $data = json_decode(file_get_contents("php://input"));
         if ($data->password != $data->passwordcheck){
             echo json_encode(['success' => false, 'message' => 'Your passwords does not match']);
             return;

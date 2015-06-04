@@ -13,8 +13,7 @@ function LoginCtrl($scope, $location, AuthenticationService){
         AuthenticationService.Login($scope.user.username, $scope.user.password, function(data){
             var response = data.data;
             if (response.success){
-                AuthenticationService.SetCredentials($scope.user.username, $scope.user.password, response.userMod);
-                //$location.path('/creator');
+                AuthenticationService.SetCredentials(response.userId, $scope.user.username, $scope.user.password, response.userMod);
             } else {
                 $scope.ErrorMessage = response.message;
                 $scope.loading = false;

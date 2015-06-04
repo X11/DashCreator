@@ -1,8 +1,8 @@
 angular.module('dashControllers').controller('CreatorCtrl', CreatorCtrl);
 
-CreatorCtrl.$inject = ['$scope', 'WidgetService'];
+CreatorCtrl.$inject = ['$scope', '$rootScope', 'WidgetService', 'UserWidgetService'];
 
-function CreatorCtrl($scope, WidgetService){
+function CreatorCtrl($scope, $r, WidgetService, UserWidgetService){
 
     $scope.hidePanels = false;
     $scope.dragging = false;
@@ -42,6 +42,14 @@ function CreatorCtrl($scope, WidgetService){
             var widgets = row.splice(0, row.length);
             $scope.widgets = $scope.widgets.concat(widgets);
         }
+        UserWidgetService.deleteAllRelations($r.globals.currentUser.id).then(function(response){
+            console.log(response);
+            if (response.success){
+                // success
+            } else {
+                // error
+            }
+        });
     };
 
     // Drag and drop handling
@@ -50,12 +58,27 @@ function CreatorCtrl($scope, WidgetService){
         if (draggedRow != "undefined"){
             draggedRow = parseInt(draggedRow);
             widget = $scope.userWidgets[draggedRow].splice(item, 1)[0];
+            UserWidgetService.updateRelation($r.globals.currentUser.id, widget.id, row).then(function(response){
+                console.log(response);
+                if (response.success){
+                    // success
+                } else {
+                    // error
+                }
+            });
         } else {
             widget = $scope.widgets.splice(item, 1)[0];
+            UserWidgetService.createRelation($r.globals.currentUser.id, widget.id, row).then(function(response){
+                console.log(response);
+                if (response.success){
+                    // success
+                } else {
+                    // error
+                }
+            });
         }
         $scope.userWidgets[row].push(widget);
         $scope.cancelDrag();
-        $scope.saveWidgets();
     };
 
     $scope.handleDrag = function(){
@@ -77,6 +100,14 @@ function CreatorCtrl($scope, WidgetService){
             $scope.dragging = false;
             $scope.widgets.push(widget);
             $scope.saveWidgets();
+            UserWidgetService.deleteRelation($r.globals.currentUser.id, widget.id).then(function(response){
+                console.log(response);
+                if (response.success){
+                    // success
+                } else {
+                    // error
+                }
+            });
         }
     };
 

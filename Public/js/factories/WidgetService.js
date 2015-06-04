@@ -1,6 +1,6 @@
 angular.module('dashFactories').factory('WidgetService', WidgetService);
 
-UserService.$inject = ['$http'];
+WidgetService.$inject = ['$http'];
 
 function WidgetService($http){
     var services = {

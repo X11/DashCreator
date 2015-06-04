@@ -19,11 +19,12 @@ function AuthenticationService($http, $cookies, $rootScope){
             });
     }
  
-    function SetCredentials(username, password, moderator) {
+    function SetCredentials(userId, username, password, moderator) {
         var authdata = Base64.encode(username + ':' + password);
 
         $rootScope.globals = {
             currentUser: {
+                id: userId,
                 username: username,
                 moderator: moderator,
                 authdata: authdata

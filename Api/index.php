@@ -24,6 +24,11 @@ Router::put('/users/:int', array('controller' => 'UserController', 'action' => '
 
 Router::post('/authenticate', array('controller' => 'AuthController', 'action' => 'login'));
 
+Router::post('/user/widget', array('controller' => 'UserWidgetController', 'action' => 'create'));
+Router::put('/user/:int/widget/:int', array('controller' => 'UserWidgetController', 'action' => 'update'));
+Router::delete('/user/:int/widget/:int', array('controller' => 'UserWidgetController', 'action' => 'delete'));
+Router::delete('/user/:int/widgets', array('controller' => 'UserWidgetController', 'action' => 'deleteAll'));
+
 Router::get('/widgets', array('controller' => 'WidgetController', 'action' => 'index'));
 Router::put('/widgets/:int', array('controller' => 'WidgetController', 'action' => 'update'));
 Router::delete('/widgets/:int', array('controller' => 'WidgetController', 'action' => 'delete'));
