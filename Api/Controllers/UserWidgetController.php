@@ -5,6 +5,16 @@ use model\UserWidgetModel;
 
 class UserWidgetController extends BaseController {
 
+    function getRelations($userId){
+        try {
+            $widgetModel = new UserWidgetModel();
+            $relations = $widgetModel->getRelations($userId);
+            echo json_encode(['success' => true, 'relations' => $relations]);
+        } catch (Exception $e){
+            echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+        }
+    }
+
     function create(){
         try {
             $data = json_decode(file_get_contents("php://input"));

@@ -29,13 +29,6 @@ function CreatorCtrl($scope, $r, WidgetService, UserWidgetService){
         //[],
     ];
 
-    //if (localStorage.getItem('userWidgets'))
-    //    $scope.userWidgets = JSON.parse(localStorage.getItem('userWidgets'));
-
-    $scope.saveWidgets = function(){
-        localStorage.setItem('userWidgets', JSON.stringify($scope.userWidgets));
-    };
-
     $scope.resetWidgets = function(){
         for (var i = 0, l = $scope.userWidgets.length; i < l; i ++) {
             var row = $scope.userWidgets[i];
@@ -99,7 +92,6 @@ function CreatorCtrl($scope, $r, WidgetService, UserWidgetService){
             widget = $scope.userWidgets[row].splice(item, 1)[0];
             $scope.dragging = false;
             $scope.widgets.push(widget);
-            $scope.saveWidgets();
             UserWidgetService.deleteRelation($r.globals.currentUser.id, widget.id).then(function(response){
                 console.log(response);
                 if (response.success){
@@ -118,11 +110,43 @@ function CreatorCtrl($scope, $r, WidgetService, UserWidgetService){
 
     // API Call
     $scope.widgets = [];
+    var relations = false;
+    var parsed = false;
+
     WidgetService.GetEnabled().then(function(response){
         if (response.success){
             $scope.widgets = response.data;
+            parseRelations();
         } else {
             // Handle error
         }
     });
+    UserWidgetService.getRelations($r.globals.currentUser.id).then(function(response){
+        if (response.success){
+            var i,v;
+            relations = {};
+            for (i = 0, l = response.relations.length; i < l; i ++) {
+                v = response.relations[i];
+                relations[v.widget_id] = v.position;
+            }
+            parseRelations();
+        } else {
+            // error
+        }
+    });
+
+    function parseRelations(){
+        console.log(relations);
+        if ($scope.widgets.length > 0 && relations !== false){
+            for (var i = 0; i < $scope.widgets.length; i ++) {
+                var v = $scope.widgets[i];
+                if (typeof(relations[v.id]) != "undefined"){
+                    widget = $scope.widgets.splice(i, 1)[0];
+                    $scope.userWidgets[relations[v.id]].push(widget);
+                    i--;
+                }
+            }
+            relations = false;
+        }
+    }
 }

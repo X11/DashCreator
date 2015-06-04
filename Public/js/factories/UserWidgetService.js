@@ -4,12 +4,17 @@ UserWidgetService.$inject = ['$http'];
 
 function UserWidgetService($http){
     var services = {
+        getRelations: getRelations,
         createRelation: createRelation,
         updateRelation: updateRelation,
         deleteRelation: deleteRelation,
         deleteAllRelations: deleteAllRelations,
     };
     return services;
+
+    function getRelations(userId){
+        return $http.get('../Api/?rt=user/'+userId+'/widgets').then(handleSuccess, handleError('Error getting all widgets'));
+    }
 
     function createRelation(userId, widgetId, row) {
         return $http.post('../Api/?rt=user/widget', {userId: userId, widgetId: widgetId, row: row}).then(handleSuccess, handleError('Error getting all widgets'));

@@ -2,6 +2,18 @@
 
 class UserWidgetModel extends BaseModel {
 
+    function getRelations($userId){
+        $stmt = $this->db->prepare("SELECT widget_id, position FROM user_widget WHERE user_id = ?");
+        $stmt->bind_param('i', $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $relations = [];
+        while($row = $result->fetch_assoc()){
+            $relations[] = $row;
+        }
+        return $relations;
+    }
+
     function create($userId, $widgetId, $position){
         $stmt = $this->db->prepare("INSERT INTO user_widget(id, user_id, widget_id, position, created_at) VALUES(NULL, ?, ?, ?, NULL)");
         $stmt->bind_param('iii', $userId, $widgetId, $position);
