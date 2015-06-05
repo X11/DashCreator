@@ -5,6 +5,7 @@ WidgetService.$inject = ['$http'];
 function WidgetService($http){
     var services = {
         GetAll: GetAll,
+        GetUserWidgets: GetUserWidgets,
         GetEnabled: GetEnabled,
         ScanAndInstall: ScanAndInstall,
         enable: enable,
@@ -30,6 +31,10 @@ function WidgetService($http){
 
     function deleteWidget(id) {
         return $http.delete('../Api/?rt=widgets/'+id).then(handleSuccess, handleError('Error getting all widgets'));
+    }
+
+    function GetUserWidgets(id){
+        return $http.get('../Api/?rt=user/'+id+'/widgets').then(handleSuccess, handleError('Error getting all widgets'));
     }
 
     // private functions

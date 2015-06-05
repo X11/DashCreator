@@ -28,4 +28,10 @@ function RootCtrl($scope, $r, $location, $timeout, AuthenticationService){
         AuthenticationService.ClearCredentials();
         $location.path('/');
     };
+
+    //
+    $scope.getWidgetView = function(item){
+        return '../Widget/'+item.directory+'/view.php';
+    };
 }
+

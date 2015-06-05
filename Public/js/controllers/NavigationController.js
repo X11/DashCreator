@@ -10,6 +10,11 @@ function NavigationCtrl($scope, $r, $location){
             route: '/',
         },
         {
+            name: 'Dash',
+            route: '/dash',
+            permission: 'loggedIn',
+        },
+        {
             name: 'Creator',
             route: '/creator',
             permission: 'loggedIn',

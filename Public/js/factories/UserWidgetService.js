@@ -13,23 +13,23 @@ function UserWidgetService($http){
     return services;
 
     function getRelations(userId){
-        return $http.get('../Api/?rt=user/'+userId+'/widgets').then(handleSuccess, handleError('Error getting all widgets'));
+        return $http.get('../Api/?rt=user/'+userId+'/relations').then(handleSuccess, handleError('Error getting all widgets'));
     }
 
     function createRelation(userId, widgetId, row) {
-        return $http.post('../Api/?rt=user/widget', {userId: userId, widgetId: widgetId, row: row}).then(handleSuccess, handleError('Error getting all widgets'));
+        return $http.post('../Api/?rt=user/relation', {userId: userId, widgetId: widgetId, row: row}).then(handleSuccess, handleError('Error getting all widgets'));
     }
 
     function updateRelation(userId, widgetId, row) {
-        return $http.put('../Api/?rt=user/'+userId+'/widget/'+widgetId, {row: row}).then(handleSuccess, handleError('Error getting all widgets'));
+        return $http.put('../Api/?rt=user/'+userId+'/relation/'+widgetId, {row: row}).then(handleSuccess, handleError('Error getting all widgets'));
     }
 
     function deleteRelation(userId, widgetId) {
-        return $http.delete('../Api/?rt=user/'+userId+'/widget/'+widgetId).then(handleSuccess, handleError('Error getting all widgets'));
+        return $http.delete('../Api/?rt=user/'+userId+'/relation/'+widgetId).then(handleSuccess, handleError('Error getting all widgets'));
     }
 
     function deleteAllRelations(userId) {
-        return $http.delete('../Api/?rt=user/'+userId+'/widgets').then(handleSuccess, handleError('Error getting all widgets'));
+        return $http.delete('../Api/?rt=user/'+userId+'/relations').then(handleSuccess, handleError('Error getting all widgets'));
     }
 
     // private functions

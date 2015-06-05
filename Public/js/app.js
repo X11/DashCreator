@@ -14,6 +14,10 @@ dashApp.config(['$routeProvider',
                     title: "Dash Creator",
                     templateUrl: 'partials/login.html',
                 }).
+                when('/dash', {
+                    title: "My Dash",
+                    templateUrl: 'partials/dash.html',
+                }).
                 when('/creator', {
                     title: "Creator",
                     templateUrl: 'partials/creator.html',

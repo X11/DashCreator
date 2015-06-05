@@ -4,16 +4,6 @@ use model\UserModel;
 
 class UserController extends BaseController {
 
-    function get($search){
-        try {
-            $UserModel = new UserModel();
-            $UserModel->isUser($search);
-            echo json_encode(['success' => true]);
-        } catch (\Exception $e){
-            echo json_encode(['success' => false, 'message' => $e->getMessage()]);
-        }
-    }
-
     function create(){
         $data = json_decode(file_get_contents("php://input"));
         if ($data->password != $data->passwordcheck){
@@ -29,5 +19,4 @@ class UserController extends BaseController {
             echo json_encode(['success' => false, 'message' => $e->getMessage()]);
         }
     }
-
 }

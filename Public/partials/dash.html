@@ -1,0 +1,11 @@
+<div ng-controller="DashCtrl" class="container-fluid">
+    <div class="row">
+        <div ng-repeat="row in userWidgets" class="grid col-xs-4 col-xs-push-0">
+            <div class="row">
+                <div ng-repeat="item in row track by $index" class="col-xs-12">
+                    <div ng-include="getWidgetView(item)"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -36,7 +36,6 @@ function CreatorCtrl($scope, $r, WidgetService, UserWidgetService){
             $scope.widgets = $scope.widgets.concat(widgets);
         }
         UserWidgetService.deleteAllRelations($r.globals.currentUser.id).then(function(response){
-            console.log(response);
             if (response.success){
                 // success
             } else {
@@ -52,7 +51,7 @@ function CreatorCtrl($scope, $r, WidgetService, UserWidgetService){
             draggedRow = parseInt(draggedRow);
             widget = $scope.userWidgets[draggedRow].splice(item, 1)[0];
             UserWidgetService.updateRelation($r.globals.currentUser.id, widget.id, row).then(function(response){
-                console.log(response);
+                //console.log(response);
                 if (response.success){
                     // success
                 } else {
@@ -62,7 +61,7 @@ function CreatorCtrl($scope, $r, WidgetService, UserWidgetService){
         } else {
             widget = $scope.widgets.splice(item, 1)[0];
             UserWidgetService.createRelation($r.globals.currentUser.id, widget.id, row).then(function(response){
-                console.log(response);
+                //console.log(response);
                 if (response.success){
                     // success
                 } else {
@@ -93,7 +92,7 @@ function CreatorCtrl($scope, $r, WidgetService, UserWidgetService){
             $scope.dragging = false;
             $scope.widgets.push(widget);
             UserWidgetService.deleteRelation($r.globals.currentUser.id, widget.id).then(function(response){
-                console.log(response);
+                //console.log(response);
                 if (response.success){
                     // success
                 } else {
@@ -101,11 +100,6 @@ function CreatorCtrl($scope, $r, WidgetService, UserWidgetService){
                 }
             });
         }
-    };
-
-    //
-    $scope.getWidgetView = function(item){
-        return '../Widget/'+item.directory+'/view.php';
     };
 
     // API Call
@@ -136,7 +130,6 @@ function CreatorCtrl($scope, $r, WidgetService, UserWidgetService){
     });
 
     function parseRelations(){
-        console.log(relations);
         if ($scope.widgets.length > 0 && relations !== false){
             for (var i = 0; i < $scope.widgets.length; i ++) {
                 var v = $scope.widgets[i];

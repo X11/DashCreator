@@ -57,4 +57,18 @@ class UserWidgetController extends BaseController {
         }
     }
 
+    function getUserWidgets($id){
+        try {
+            $widgetModel = new UserWidgetModel();
+            $widgets = $widgetModel->getUserWidgets($id);
+            $data = [ [], [], [] ];
+            foreach($widgets as $value){
+                $data[$value['position']][] = $value;
+            }
+            echo json_encode(['success' => true, 'data' => $data]);
+        } catch (Exception $e){
+            echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+        }
+    }
+
 }

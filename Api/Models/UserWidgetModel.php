@@ -46,4 +46,16 @@ class UserWidgetModel extends BaseModel {
         }
     }
 
+    function getUserWidgets($id){
+        $stmt = $this->db->prepare("SELECT widgets.id, widgets.name, widgets.directory, position FROM user_widget INNER JOIN widgets ON user_widget.widget_id = widgets.id WHERE user_widget.user_id = ? AND widgets.disabled = '0'");
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $widgets = [];
+        while($row = $result->fetch_assoc()){
+            $widgets[] = $row;
+        }
+        return $widgets;
+    }
+
 }
