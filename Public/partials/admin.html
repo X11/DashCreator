@@ -6,8 +6,9 @@
                 <h2>Widgets</h2>
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="btn-group">
+                        <div>
                             <button ng-disabled="installWidgets.disabled" ng-click="installWidgets.run()" class="btn btn-primary btn-sm">Scan for widgets</button>
+                            <button ng-disabled="installWidgets.disabled" ng-click="loadWidgets()" class="btn btn-primary btn-sm">Refresh widgets</button>
                         </div>
                         <form class="form-inline">
                             <div class="form-group">

@@ -18,6 +18,7 @@ function AdminCtrl($scope, WidgetService){
                 $scope.installWidgets.disabled = false;
             });
         },
+
     };
 
     $scope.enableWidget = function(id, val){
