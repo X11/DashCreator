@@ -42,5 +42,5 @@ Router::get('/admin/widgets', array('controller' => 'WidgetController', 'action'
 try {
     Router::run();
 } catch (Exception $e){
-
+    echo json_encode(['success' => false, 'message' => $e->getMessage()]);
 }
