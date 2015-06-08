@@ -14,6 +14,9 @@
 
 .widgetbar {
     z-index:7;
+}
+
+.widgetbar .widgets {
     max-height:25vh;
     overflow:auto;
 }
