@@ -14,8 +14,8 @@ function RootCtrl($scope, $r, $location, $timeout, AuthenticationService){
 
     $scope.info= {
         title: "Dash Creator",
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        gettingStarted: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        description: "The Dash Creator is a simple web-application to create your own dashboard. You can add diffirent widgets to your dashboard to customize your dashboard to your personal preference. All you have to do is log in and start making your dashboard!",
+        gettingStarted: "Get started now by clicking the button below, you will get to a creator screen where u can drag the widgets of your choise to your dashboard. You can see the widgets by clicking the '+' button on the right bottom of your screen. When you are done editing your dashboard just simply click on the little screen on the left bottom on the screen. The rest of the options should be really obvious because of the icons. Good luck and Have fun!",
     };
 
     $scope.$on('$viewContentLoaded', function(){
