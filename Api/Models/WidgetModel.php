@@ -3,7 +3,7 @@
 class WidgetModel extends BaseModel {
 
     function getAll(){
-        $stmt = $this->db->prepare("SELECT id, name, directory, disabled FROM widgets");
+        $stmt = $this->db->prepare("SELECT id, name, directory, disabled FROM `widgets`");
         $stmt->execute();
         $result = $stmt->get_result();
         $widgets = [];
@@ -16,7 +16,7 @@ class WidgetModel extends BaseModel {
     }
 
     function getEnabled(){
-        $stmt = $this->db->prepare("SELECT id, name, directory, disabled FROM widgets WHERE disabled = '0'");
+        $stmt = $this->db->prepare("SELECT id, name, directory, disabled FROM `widgets` WHERE disabled = '0'");
         $stmt->execute();
         $result = $stmt->get_result();
         $widgets = [];
@@ -29,7 +29,7 @@ class WidgetModel extends BaseModel {
     }
 
     function create($name, $folder, $disabled){
-        $stmt = $this->db->prepare("INSERT INTO widgets(id, name, directory, disabled) VALUES(NULL, ?, ?, ?)");
+        $stmt = $this->db->prepare("INSERT INTO `widgets` (id, name, directory, disabled) VALUES(NULL, ?, ?, ?)");
         $stmt->bind_param('sss', $name, $folder, $disabled);
         if(!$stmt->execute()){
             throw new \Exception("Failed to create an widget Execute failed: (" . $stmt->errno . ") " . $stmt->error);
@@ -37,7 +37,7 @@ class WidgetModel extends BaseModel {
     }
 
     function delete($id){
-        $stmt = $this->db->prepare("DELETE FROM widgets WHERE id = ?");
+        $stmt = $this->db->prepare("DELETE FROM `widgets` WHERE id = ?");
         $stmt->bind_param('s', $id);
         if(!$stmt->execute()){
             throw new \Exception("Failed to update widget Execute failed: (" . $stmt->errno . ") " . $stmt->error);
@@ -45,7 +45,7 @@ class WidgetModel extends BaseModel {
     }
 
     function setEnabled($id, $val){
-        $stmt = $this->db->prepare("UPDATE widgets SET disabled = ? WHERE id = ?");
+        $stmt = $this->db->prepare("UPDATE `widgets` SET disabled = ? WHERE id = ?");
         $stmt->bind_param('ss', $val, $id);
         if(!$stmt->execute()){
             throw new \Exception("Failed to update widget Execute failed: (" . $stmt->errno . ") " . $stmt->error);
