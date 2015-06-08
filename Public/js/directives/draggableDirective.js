@@ -1,20 +1,28 @@
-angular.module('dashDirectives').directive('draggable', function(){
-    return function(scope, element, attrs){
+(function(){
 
-        var el = element[0];
-        el.draggable = true;
+    'use strict';
 
-        el.addEventListener('dragstart', function(e){
-            e.dataTransfer.effectAllowed = 'move';
-            e.dataTransfer.setData('widgetIndex', this.dataset.widgetIndex);
-            e.dataTransfer.setData('widgetRow', this.dataset.widgetRow);
-            this.classList.add('drag');
-            scope.$apply(attrs.drag);
-        }, false);
+    angular
+        .module('dashDirectives')
+        .directive('draggable', function(){
+            return function(scope, element, attrs){
 
-        el.addEventListener('dragend', function(e){
-            this.classList.remove('drag');
-            scope.$apply(attrs.dragend);
-        }, false);
-    };
-});
+                var el = element[0];
+                el.draggable = true;
+
+                el.addEventListener('dragstart', function(e){
+                    e.dataTransfer.effectAllowed = 'move';
+                    e.dataTransfer.setData('widgetIndex', this.dataset.widgetIndex);
+                    e.dataTransfer.setData('widgetRow', this.dataset.widgetRow);
+                    this.classList.add('drag');
+                    scope.$apply(attrs.drag);
+                }, false);
+
+                el.addEventListener('dragend', function(e){
+                    this.classList.remove('drag');
+                    scope.$apply(attrs.dragend);
+                }, false);
+            };
+        });
+
+})();

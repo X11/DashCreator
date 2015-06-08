@@ -1,2 +1,7 @@
+(function(){
 
-angular.module('dashControllers', []);
+    'use strict';
+
+    angular.module('dashControllers', []);
+
+})();

@@ -1,38 +1,46 @@
-angular.module('dashControllers').controller('NavigationCtrl', NavigationCtrl);
+(function(){
 
-NavigationCtrl.$inject = ['$scope', '$rootScope', '$location'];
+    'use strict';
 
-function NavigationCtrl($scope, $r, $location){
+    angular
+        .module('dashControllers')
+        .controller('NavigationCtrl', NavigationCtrl);
 
-    $scope.links = [
-        {
-            name: 'Home',
-            route: '/',
-        },
-        {
-            name: 'Dash',
-            route: '/dash',
-            permission: 'loggedIn',
-        },
-        {
-            name: 'Creator',
-            route: '/creator',
-            permission: 'loggedIn',
-        },
-        {
-            name: 'Management',
-            route: '/admin',
-            permission: 'moderator',
-        }
-    ];
+    NavigationCtrl.$inject = ['$scope', '$rootScope', '$location'];
 
-    $scope.gotAccess = function(permission){
-        if ($scope[permission]) return true;
-        return false;
-    };
+    function NavigationCtrl($scope, $r, $location){
 
-    $scope.isActive = function(route){
-        if (route == $location.path()) return true;
-        return false;
-    };
-}
+        $scope.links = [
+            {
+                name: 'Home',
+                route: '/',
+            },
+            {
+                name: 'Dash',
+                route: '/dash',
+                permission: 'loggedIn',
+            },
+            {
+                name: 'Creator',
+                route: '/creator',
+                permission: 'loggedIn',
+            },
+            {
+                name: 'Management',
+                route: '/admin',
+                permission: 'moderator',
+            }
+        ];
+
+        $scope.gotAccess = function(permission){
+            if ($scope[permission]) return true;
+            return false;
+        };
+
+        $scope.isActive = function(route){
+            if (route == $location.path()) return true;
+            return false;
+        };
+    }
+
+})();

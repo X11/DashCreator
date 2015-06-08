@@ -1,46 +1,53 @@
-angular.module('dashFactories').factory('UserWidgetService', UserWidgetService);
+(function(){
 
-UserWidgetService.$inject = ['$http'];
+    'use strict';
 
-function UserWidgetService($http){
-    var services = {
-        getRelations: getRelations,
-        createRelation: createRelation,
-        updateRelation: updateRelation,
-        deleteRelation: deleteRelation,
-        deleteAllRelations: deleteAllRelations,
-    };
-    return services;
+    angular
+        .module('dashFactories')
+        .factory('UserWidgetService', UserWidgetService);
 
-    function getRelations(userId){
-        return $http.get('../Api/?rt=user/'+userId+'/relations').then(handleSuccess, handleError('Error getting all widgets'));
-    }
+    UserWidgetService.$inject = ['$http'];
 
-    function createRelation(userId, widgetId, row) {
-        return $http.post('../Api/?rt=user/relation', {userId: userId, widgetId: widgetId, row: row}).then(handleSuccess, handleError('Error getting all widgets'));
-    }
-
-    function updateRelation(userId, widgetId, row) {
-        return $http.put('../Api/?rt=user/'+userId+'/relation/'+widgetId, {row: row}).then(handleSuccess, handleError('Error getting all widgets'));
-    }
-
-    function deleteRelation(userId, widgetId) {
-        return $http.delete('../Api/?rt=user/'+userId+'/relation/'+widgetId).then(handleSuccess, handleError('Error getting all widgets'));
-    }
-
-    function deleteAllRelations(userId) {
-        return $http.delete('../Api/?rt=user/'+userId+'/relations').then(handleSuccess, handleError('Error getting all widgets'));
-    }
-
-    // private functions
-
-    function handleSuccess(response) {
-        return response.data;
-    }
-
-    function handleError(error) {
-        return function () {
-            return { success: false, message: error };
+    function UserWidgetService($http){
+        var services = {
+            getRelations: getRelations,
+            createRelation: createRelation,
+            updateRelation: updateRelation,
+            deleteRelation: deleteRelation,
+            deleteAllRelations: deleteAllRelations,
         };
+        return services;
+
+        function getRelations(userId){
+            return $http.get('../Api/?rt=user/'+userId+'/relations').then(handleSuccess, handleError('Error getting all widgets'));
+        }
+
+        function createRelation(userId, widgetId, row) {
+            return $http.post('../Api/?rt=user/relation', {userId: userId, widgetId: widgetId, row: row}).then(handleSuccess, handleError('Error getting all widgets'));
+        }
+
+        function updateRelation(userId, widgetId, row) {
+            return $http.put('../Api/?rt=user/'+userId+'/relation/'+widgetId, {row: row}).then(handleSuccess, handleError('Error getting all widgets'));
+        }
+
+        function deleteRelation(userId, widgetId) {
+            return $http.delete('../Api/?rt=user/'+userId+'/relation/'+widgetId).then(handleSuccess, handleError('Error getting all widgets'));
+        }
+
+        function deleteAllRelations(userId) {
+            return $http.delete('../Api/?rt=user/'+userId+'/relations').then(handleSuccess, handleError('Error getting all widgets'));
+        }
+
+        // private functions
+
+        function handleSuccess(response) {
+            return response.data;
+        }
+
+        function handleError(error) {
+            return function () {
+                return { success: false, message: error };
+            };
+        }
     }
-}
+})();

@@ -1,1 +1,8 @@
-angular.module('dashDirectives', []);
+(function(){
+
+    'use strict';
+
+    angular
+        .module('dashDirectives', []);
+
+})();

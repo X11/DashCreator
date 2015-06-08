@@ -1,1 +1,8 @@
-angular.module('dashFactories', []);
+(function(){
+    
+    'use strict';
+
+    angular
+        .module('dashFactories', []);
+
+})();

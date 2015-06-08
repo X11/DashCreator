@@ -1,32 +1,40 @@
-angular.module('dashDirectives').directive('ngMatch', ngMatch);
+(function(){
 
-ngMatch.$inject = ['$parse'];
+    'use strict';
 
-function ngMatch($parse) {
+    angular
+        .module('dashDirectives')
+        .directive('ngMatch', ngMatch);
 
-    var directive = {
-        restrict: 'A',
-        require: '?ngModel',
-        link: function link(scope, elem, attrs, ctrl) {
-            // if ngModel is not defined, we don't need to do anything
-            if (!ctrl) return;
-            if (!attrs['ngMatch']) return;
+    ngMatch.$inject = ['$parse'];
 
-            var firstPassword = $parse(attrs['ngMatch']);
+    function ngMatch($parse) {
 
-            var validator = function (value) {
-                var temp = firstPassword(scope),
-                v = value === temp;
-                ctrl.$setValidity('match', v);
-                return value;
-            };
+        var directive = {
+            restrict: 'A',
+            require: '?ngModel',
+            link: function link(scope, elem, attrs, ctrl) {
+                // if ngModel is not defined, we don't need to do anything
+                if (!ctrl) return;
+                if (!attrs.ngMatch) return;
 
-            ctrl.$parsers.unshift(validator);
-            ctrl.$formatters.push(validator);
-            attrs.$observe('ngMatch', function () {
-                validator(ctrl.$viewValue);
-            });
-        }
-    };
-    return directive;
-}
+                var firstPassword = $parse(attrs.ngMatch);
+
+                var validator = function (value) {
+                    var temp = firstPassword(scope),
+                    v = value === temp;
+                    ctrl.$setValidity('match', v);
+                    return value;
+                };
+
+                ctrl.$parsers.unshift(validator);
+                ctrl.$formatters.push(validator);
+                attrs.$observe('ngMatch', function () {
+                    validator(ctrl.$viewValue);
+                });
+            }
+        };
+        return directive;
+    }
+
+})();

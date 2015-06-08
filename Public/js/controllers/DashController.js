@@ -1,23 +1,29 @@
-angular.module('dashControllers').controller('DashCtrl', DashCtrl);
+(function(){
+    
+    'use strict';
 
-DashCtrl.$inject = ['$scope', '$rootScope', 'WidgetService'];
+    angular
+        .module('dashControllers')
+        .controller('DashCtrl', DashCtrl);
 
-function DashCtrl($scope, $r, WidgetService){
+    DashCtrl.$inject = ['$scope', '$rootScope', 'WidgetService'];
 
-    // User widgets
-    $scope.userWidgets = [
-        [],
-        [],
-        [],
-        //[],
-        //[],
-    ];
+    function DashCtrl($scope, $r, WidgetService){
 
-    WidgetService.GetUserWidgets($r.globals.currentUser.id).then(function(response){
-        if (response.success){
-            $scope.userWidgets= response.data;
-        } else {
-            // Handle error
-        }
-    });
-}
+        // User widgets
+        $scope.userWidgets = [
+            [],
+            [],
+            [],
+        ];
+
+        WidgetService.GetUserWidgets($r.globals.currentUser.id).then(function(response){
+            if (response.success){
+                $scope.userWidgets= response.data;
+            } else {
+                // Handle error
+            }
+        });
+    }
+
+})();
